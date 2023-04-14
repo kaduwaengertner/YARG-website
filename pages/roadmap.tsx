@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import Footer from '@/components/modules/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>YARG - Yet Another Rhythm Game</title>
+        <title>YARG - ROADMAP</title>
         <meta name="description" content="Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -19,7 +18,6 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         <link rel="manifest" href="/site.webmanifest"/>
       </Head>
-      <Footer/>
     </>
   )
 }
