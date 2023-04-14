@@ -1,0 +1,25 @@
+import Head from 'next/head'
+import Image from 'next/image'
+import { Inter } from 'next/font/google'
+import styles from '@/styles/Home.module.css'
+import Header from '@/components/modules/Header'
+import Footer from '@/components/modules/Footer'
+import HeroHeader from '@/components/modules/HeroHeader'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <title>Kadu&apos;s Crazy Lab 🧪</title>
+        <meta name="description" content="Creating a world of fun, one crazy experiment at a time." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Header style="dark" />
+      <HeroHeader type="front-page" title="Welcome to Kadu&apos;s Crazy Lab" subtitle="Join our community of makers, doers, and dreamers!" />
+      <Footer />
+    </>
+  )
+}
