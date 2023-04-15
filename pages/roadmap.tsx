@@ -34,8 +34,8 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                     <tr className={styles.header}>
                         <th>Task</th>
                         <th>Category</th>
-                        <th>Status</th>
                         <th>Priority</th>
+                        <th>Status</th>
                     </tr>
                     { roadmap.map(task => Row(task)) }
                 </tbody>
@@ -61,8 +61,8 @@ const Row: React.FC<Roadmap> = (task) => {
             <span className={styles.description}>{task.description}</span>
         </td>
         <td><Tag>{task.type}</Tag></td>
-        <td><Tag background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
         <td><Tag background={priorityColor.background} color={priorityColor.color}>{task.taskSize}</Tag></td>
+        <td><Tag background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
     </tr>
 
     </>)
