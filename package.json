@@ -11,6 +11,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
@@ -20,7 +21,6 @@
     "papaparse": "^5.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-fontawesome": "^1.7.1",
     "typescript": "5.0.4"
   },
   "devDependencies": {
