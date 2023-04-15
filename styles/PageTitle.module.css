@@ -1,0 +1,16 @@
+.titleBox {
+    margin: 70px auto;
+    font-weight: 700;
+    width: 100%;
+    max-width: var(--max-width);
+}
+
+.title {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 1.3em;
+    color: var(--accent);
+}
