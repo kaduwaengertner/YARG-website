@@ -15,7 +15,9 @@ const DownloadButton: React.FC = () => {
         .then(version => setVersion(version))
     }, []);
 
-    return <div className="download">
+    return (
+    <a href="https://github.com/EliteAsian123/YARG/releases/latest">
+    <div className="download">
         DOWNLOAD {version && version.version}
         <style jsx>{`
             .download {
@@ -28,7 +30,8 @@ const DownloadButton: React.FC = () => {
             }
         `}
         </style>
-    </div>;
+    </div>
+    </a>);
 }
 
 export default DownloadButton;
