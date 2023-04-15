@@ -5,6 +5,7 @@ import Tag from '@/components/Tag';
 import { Roadmap, getRoadmap } from '@/lib/roadmap';
 import styles from '@/styles/Roadmap.module.css';
 import Head from 'next/head'
+import { Dispatch, SetStateAction, useState } from 'react';
 
 export async function getStaticProps() {
 
@@ -19,6 +20,42 @@ export async function getStaticProps() {
 };
 
 export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
+
+    function transformName(key: string) {
+        return key.trim().toLowerCase()
+    }
+
+    function getList(key: keyof Roadmap) {
+        const allList = roadmap.map(task => transformName(task[key]));
+        const uniqueSet = new Set(allList);
+        return Array.from(uniqueSet);
+    }
+    
+    const categoryList = getList('type');
+    const priorityList = getList('taskSize');
+    const statusList = getList('status');
+    
+    const [categoryFilter, setCategoryFilter] = useState(categoryList);
+    const [priorityFilter, setPriorityFilter] = useState(priorityList);
+    const [statusFilter, setStatusFilter] = useState(statusList);
+
+    function toggleFilter(setter: Dispatch<SetStateAction<string[]>>, rawName: string, toggle?: boolean) {
+        const name = transformName(rawName);
+
+        const add = (list: string[]) => (!list.includes(name)) ? [...list, name] : list;
+        const remove = (list: string[]) => list.filter(item => item !== name);
+
+        if(typeof toggle === "undefined") {
+            return setter(list => list.includes(name) ? remove(list) : add(list));
+        } else {
+            return toggle === true ? setter(add) : setter(remove);
+        }
+    }
+
+    const toggleCategory = (name: string, toggle?: boolean) => toggleFilter(setCategoryFilter, name, toggle);
+    const togglePriority = (name: string, toggle?: boolean) => toggleFilter(setPriorityFilter, name, toggle);
+    const toggleStatus = (name: string, toggle?: boolean) => toggleFilter(setStatusFilter, name, toggle);
+
     return (<>
         <Head>
             <title>Roadmap - Yet Another Rhythm Game</title>
@@ -29,6 +66,59 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         <main>
             <PageTitle title="Roadmap" description="Upcoming features and plans" />
 
+            <div className={styles.filterGrid}>
+                <div>
+                    <div className={styles.title}>
+                        Category List
+                        <Tag className="clickable" onClick={() => {setCategoryFilter(categoryList)}}>All</Tag>
+                        <Tag className="clickable" onClick={() => {setCategoryFilter([])}}>None</Tag>
+                    </div>
+
+                    {categoryList.map(category => {
+                        return (
+                            <Tag key={category} onClick={() => {toggleCategory(category)}} attributes={{"data-active": categoryFilter.includes(transformName(category))}} className="clickable">
+                                <span>{category}</span>
+                            </Tag>
+                        )
+                    })}
+                </div>
+
+                <div>
+                    <div className={styles.title}>
+                        Priority List
+                        <Tag className="clickable" onClick={() => {setPriorityFilter(priorityList)}}>All</Tag>
+                        <Tag className="clickable" onClick={() => {setPriorityFilter([])}}>None</Tag>
+                    </div>
+
+                    {priorityList.map(priority => {
+                        const color = getPriorityColor(priority);
+                        return (
+                            <Tag key={priority} onClick={() => {togglePriority(priority)}} attributes={{"data-active": priorityFilter.includes(transformName(priority))}} className="clickable" background={color.background} color={color.color}>
+                                <span>{priority}</span>
+                            </Tag>
+                        )
+                    })}
+                </div>
+
+                <div>
+                    <div className={styles.title}>
+                        Status List
+                        <Tag className="clickable" onClick={() => {setStatusFilter(statusList)}}>All</Tag>
+                        <Tag className="clickable" onClick={() => {setStatusFilter([])}}>None</Tag>
+                    </div>
+
+                    {statusList.map(status => {
+                        const color = getStatusColor(status);
+                        return (
+                            <Tag key={status} onClick={() => {toggleStatus(status)}} attributes={{"data-active": statusFilter.includes(transformName(status))}} className="clickable" background={color.background} color={color.color}>
+                                <span>{status}</span>
+                            </Tag>
+                        );
+                    })}
+                </div>
+            </div>
+
+
             <table className={styles.table}>
                 <tbody>
                     <tr className={styles.header}>
@@ -37,7 +127,15 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                         <th>Priority</th>
                         <th>Status</th>
                     </tr>
-                    { roadmap.map(task => Row(task)) }
+                    { 
+                        roadmap
+                        .filter(task => 
+                            statusFilter.includes(transformName(task.status)) &&
+                            categoryFilter.includes(transformName(task.type)) &&
+                            priorityFilter.includes(transformName(task.taskSize))
+                        )
+                        .map(task => Row(task)) 
+                    }
                 </tbody>
             </table>
         </main>
