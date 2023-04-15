@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import useSWR from '@/hooks/useSWR';
 
 type Version = {
     version: string,
@@ -7,13 +7,7 @@ type Version = {
 
 const DownloadButton: React.FC = () => {
 
-    const [version, setVersion] = useState<Version>();
-
-    useEffect(() => {
-        fetch("api/version")
-        .then(res => res.json())
-        .then(version => setVersion(version))
-    }, []);
+    const { data: version } = useSWR<Version>('api/version');
 
     return (
     <a href="https://github.com/EliteAsian123/YARG/releases/latest">

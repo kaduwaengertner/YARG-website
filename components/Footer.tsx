@@ -3,16 +3,11 @@ import styles from '@/styles/Footer.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faDiscord, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import useSWR from '@/hooks/useSWR';
 
 const Footer: React.FC = () => {
 
-    const [contributorsCount, setContributorsCount] = useState(null);
-
-    useEffect(() => {
-        fetch("api/contributors")
-        .then(res => res.json())
-        .then(contributors => setContributorsCount(contributors.length))
-    }, []);
+    const { data: contributors } = useSWR<[string]>('api/contributors');
 
     return (<footer className={styles.footer}>
         <div className={styles.socials}>
@@ -21,7 +16,7 @@ const Footer: React.FC = () => {
             <a className={styles.github} href="https://github.com/EliteAsian123/YARG"><FontAwesomeIcon icon={faGithub} /></a>
         </div>
         <div className={styles.text}>
-            Made with a lot of <FontAwesomeIcon icon={faHeart} /> by <span className={styles.contributorsCount}>{contributorsCount || ""}</span> amazing people
+            Made with a lot of <FontAwesomeIcon icon={faHeart} /> by <span className={styles.contributorsCount}>{contributors?.length || ""}</span> amazing people
         </div>
     </footer>);
 }

@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest,res: NextApiResponse) 
 
         const contributorsNames = raw.map((contribuitor: any) => contribuitor.login);
 
-        res.setHeader('Cache-Control', 's-maxage=86400');
+        res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate');
         res.json(contributorsNames);
     } catch (e) {
         console.error(e);

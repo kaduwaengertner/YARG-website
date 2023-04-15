@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest,res: NextApiResponse) 
             headers: { "User-Agent": "YARG" }
         }).then(res => res.json());
 
-        res.setHeader('Cache-Control', 's-maxage=86400');
+        res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate');
         res.json({version: data["tag_name"], link: data["html_url"]});
     } catch (e) {
         console.error(e);
