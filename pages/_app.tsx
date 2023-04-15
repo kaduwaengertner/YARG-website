@@ -1,8 +1,9 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Barlow } from 'next/font/google';
 
-const barlow = Barlow({ weight: ['600', '700'], subsets: ["latin"] });
+import { Barlow } from 'next/font/google';
+const barlow = Barlow({ weight: ['500', '600', '700'], subsets: ["latin"] });
+
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
