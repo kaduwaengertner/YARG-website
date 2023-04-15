@@ -24,3 +24,4 @@ async function getRoadmap():Promise<[Roadmap]> {
 }
 
 export { getRoadmap };
+export type { Roadmap };
