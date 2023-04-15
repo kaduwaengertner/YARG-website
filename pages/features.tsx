@@ -6,12 +6,12 @@ import Head from 'next/head'
 export default function Roadmap() {
     return (<>
         <Head>
-            <title>Roadmap - Yet Another Rhythm Game</title>
+            <title>Features - Yet Another Rhythm Game</title>
         </Head>
 
         <MenuHeader />
 
-        <PageTitle title="Roadmap" description="Upcoming features and plans" />
+        <PageTitle title="Features" description="Discover our game's awesome features!" />
 
         <Footer />
         </>

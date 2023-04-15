@@ -1,114 +1,10 @@
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal {
-  position: relative;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  padding: 16px;
-  width: 400px;
-  max-width: 100%;
-}
-
-.modal-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 24px;
-  font-weight: bold;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-
-.member--logged {
-  font-weight: bold;
-}
-
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --background: #060B12;
+  --foreground: #ffffff;
+  --foreground-gray: #D9D9D9;
+  --accent: #67CBFF;
 
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
+  --max-width: 1200px;
 }
 
 * {
@@ -117,89 +13,12 @@
   margin: 0;
 }
 
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground);
+  background: var(--background);
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-.page-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 25px;
-  width: 1200px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-
-.left-sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  gap: 25px;
-  width: 300px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.dashboard-content-block {
-  border-radius: 10px;
-  background: #FBFBFB;
-  padding: 25px;
-  color: #2B2D36;
-}
-
-.character-view {
-  width: 700px;
-  height: 700px;
-  background-image: url(../assets/character/template.png);
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.character-view .Head {
-  width: 700px;
-  height: 700px;
-  position: absolute;
-  z-index: 5;
-}
-
-.dashboard-profile-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 25px;
-  gap: 10px;
-  width: 300px;
-  left: 20px;
-  top: 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) -15.2%, #FBFBFB 33.86%);
-  border-radius: 8px;
-  color: #2B2D36;
 }

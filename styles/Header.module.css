@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    max-width: var(--max-width);
+    display:flex;
+    margin: 100px auto;
+}
+
+.logo {
+    height: 60px;
+}
+
+.links {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.links > .link {
+    text-transform: uppercase;
+}
