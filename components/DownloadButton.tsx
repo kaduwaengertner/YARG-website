@@ -24,6 +24,7 @@ const DownloadButton: React.FC = () => {
                 padding: 10px 20px;
                 border-radius: 50px;
                 border: 3px solid rgba(255, 255, 255, 0.5);
+                font-weight: 700;
             }
         `}
         </style>
