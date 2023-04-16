@@ -56,6 +56,26 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
     const togglePriority = (name: string, toggle?: boolean) => toggleFilter(setPriorityFilter, name, toggle);
     const toggleStatus = (name: string, toggle?: boolean) => toggleFilter(setStatusFilter, name, toggle);
 
+    const Row: React.FC<Roadmap> = (task) => {
+
+        const statusColor = getStatusColor(task.status);
+        const priorityColor = getPriorityColor(task.taskSize);
+    
+        return (<>
+    
+        <tr>
+            <td>
+                <span className={styles.title}>{task.task}</span>
+                <span className={styles.description}>{task.description}</span>
+            </td>
+            <td><Tag className="clickable" onClick={() => {setCategoryFilter([transformName(task.type)])}} >{task.type}</Tag></td>
+            <td><Tag className="clickable" onClick={() => {setPriorityFilter([transformName(task.taskSize)])}} background={priorityColor.background} color={priorityColor.color}>{task.taskSize}</Tag></td>
+            <td><Tag className="clickable" onClick={() => {setStatusFilter([transformName(task.status)])}} background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
+        </tr>
+    
+        </>)
+    }
+
     return (<>
         <Head>
             <title>Roadmap - Yet Another Rhythm Game</title>
@@ -146,25 +166,6 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
     );
 }
 
-const Row: React.FC<Roadmap> = (task) => {
-
-    const statusColor = getStatusColor(task.status);
-    const priorityColor = getPriorityColor(task.taskSize);
-
-    return (<>
-
-    <tr>
-        <td>
-            <span className={styles.title}>{task.task}</span>
-            <span className={styles.description}>{task.description}</span>
-        </td>
-        <td><Tag>{task.type}</Tag></td>
-        <td><Tag background={priorityColor.background} color={priorityColor.color}>{task.taskSize}</Tag></td>
-        <td><Tag background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
-    </tr>
-
-    </>)
-}
 
 type TagColor = {
     background: string,
