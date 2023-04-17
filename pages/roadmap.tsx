@@ -38,6 +38,13 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
     const [priorityFilter, setPriorityFilter] = useState(priorityList);
     const [statusFilter, setStatusFilter] = useState(statusList);
 
+    const filterCheck = (task: Roadmap) => {
+        return searchCheck(task.task, searchFilter) &&
+        statusFilter.includes(transformName(task.status)) &&
+        categoryFilter.includes(transformName(task.type)) &&
+        priorityFilter.includes(transformName(task.taskSize))
+    }
+
     function toggleFilter(setter: Dispatch<SetStateAction<string[]>>, rawName: string, toggle?: boolean) {
         const name = transformName(rawName);
 
@@ -149,12 +156,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                     </tr>
                     { 
                         roadmap
-                        .filter(task => 
-                            searchCheck(task.task, searchFilter) &&
-                            statusFilter.includes(transformName(task.status)) &&
-                            categoryFilter.includes(transformName(task.type)) &&
-                            priorityFilter.includes(transformName(task.taskSize))
-                        )
+                        .filter(task => filterCheck(task))
                         .map(task => Row(task)) 
                     }
                 </tbody>
