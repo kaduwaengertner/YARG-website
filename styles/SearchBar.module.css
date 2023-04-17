@@ -1,0 +1,30 @@
+.search {
+    height: 45px;
+    padding: 0 10px;
+    border-radius: 50em;
+
+    background-color: var(--feature-background);
+    border: solid 2px var(--feature-border);
+    color: var(--accent);
+    opacity: 0.5;
+    transition: opacity .2s;
+    
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search input {
+    background: none;
+    border: none;
+    outline-color: transparent;
+    outline-style: solid;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.search[data-active="true"],
+.search:focus-within {
+    opacity: 1;
+}

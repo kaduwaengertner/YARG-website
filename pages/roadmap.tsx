@@ -1,9 +1,13 @@
 import Footer from '@/components/Footer'
 import MenuHeader from '@/components/MenuHeader'
-import PageTitle from '@/components/PageTitle';
+import PageTitle, { PageButton, PageButtons } from '@/components/PageTitle';
+import SearchBar, { searchCheck } from '@/components/SearchBar';
 import Tag from '@/components/Tag';
 import { Roadmap, getRoadmap } from '@/lib/roadmap';
 import styles from '@/styles/Roadmap.module.css';
+import { transformName } from '@/util/StringUtils';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head'
 import { Dispatch, SetStateAction, useState } from 'react';
 
@@ -21,10 +25,6 @@ export async function getStaticProps() {
 
 export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
 
-    function transformName(key: string) {
-        return key.trim().toLowerCase()
-    }
-
     function getList(key: keyof Roadmap) {
         const allList = roadmap.map(task => transformName(task[key]));
         const uniqueSet = new Set(allList);
@@ -35,9 +35,19 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
     const priorityList = getList('taskSize');
     const statusList = getList('status');
     
+    /* Filters */
+    const [filterView, setFilterView] = useState(false);
+    const [searchFilter, setSearchFilter] = useState("");
     const [categoryFilter, setCategoryFilter] = useState(categoryList);
     const [priorityFilter, setPriorityFilter] = useState(priorityList);
     const [statusFilter, setStatusFilter] = useState(statusList);
+
+    const filterCheck = (task: Roadmap) => {
+        return searchCheck(task.task, searchFilter) &&
+        statusFilter.includes(transformName(task.status)) &&
+        categoryFilter.includes(transformName(task.type)) &&
+        priorityFilter.includes(transformName(task.taskSize))
+    }
 
     function toggleFilter(setter: Dispatch<SetStateAction<string[]>>, rawName: string, toggle?: boolean) {
         const name = transformName(rawName);
@@ -52,6 +62,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         }
     }
 
+    const toggleFilterView = (toggle?: boolean) => setFilterView(current => typeof toggle === "boolean" ? toggle : !current);
     const toggleCategory = (name: string, toggle?: boolean) => toggleFilter(setCategoryFilter, name, toggle);
     const togglePriority = (name: string, toggle?: boolean) => toggleFilter(setPriorityFilter, name, toggle);
     const toggleStatus = (name: string, toggle?: boolean) => toggleFilter(setStatusFilter, name, toggle);
@@ -84,8 +95,14 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         <MenuHeader />
 
         <main>
-            <PageTitle title="Roadmap" description="Upcoming features and plans" />
+            <PageTitle title="Roadmap" description="Upcoming features and plans">
+                <PageButtons>
+                    <SearchBar setter={setSearchFilter}/>
+                    <PageButton disabled={!filterView} onClick={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
+                </PageButtons>
+            </PageTitle>
 
+            {filterView && (
             <div className={styles.filterGrid}>
                 <div>
                     <div className={styles.title}>
@@ -137,6 +154,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                     })}
                 </div>
             </div>
+            )}
 
 
             <table className={styles.table}>
@@ -149,11 +167,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                     </tr>
                     { 
                         roadmap
-                        .filter(task => 
-                            statusFilter.includes(transformName(task.status)) &&
-                            categoryFilter.includes(transformName(task.type)) &&
-                            priorityFilter.includes(transformName(task.taskSize))
-                        )
+                        .filter(task => filterCheck(task))
                         .map(task => Row(task)) 
                     }
                 </tbody>

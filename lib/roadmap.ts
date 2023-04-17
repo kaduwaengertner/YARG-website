@@ -1,4 +1,4 @@
-import toCamel from '@/util/toCamelCase';
+import { toCamelCase } from '@/util/StringUtils';
 import Papa, { ParseResult } from 'papaparse';
 
 type Roadmap = {
@@ -16,7 +16,7 @@ async function getRoadmap():Promise<[Roadmap]> {
     
     const parser = Papa.parse(raw, {
         header: true,
-        transformHeader: header => toCamel(header)
+        transformHeader: header => toCamelCase(header)
     });
 
     const data = parser.data as [Roadmap];
