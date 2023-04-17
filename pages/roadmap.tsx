@@ -4,6 +4,7 @@ import PageTitle from '@/components/PageTitle';
 import Tag from '@/components/Tag';
 import { Roadmap, getRoadmap } from '@/lib/roadmap';
 import styles from '@/styles/Roadmap.module.css';
+import { transformName } from '@/util/StringUtils';
 import Head from 'next/head'
 import { Dispatch, SetStateAction, useState } from 'react';
 
@@ -20,10 +21,6 @@ export async function getStaticProps() {
 };
 
 export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
-
-    function transformName(key: string) {
-        return key.trim().toLowerCase()
-    }
 
     function getList(key: keyof Roadmap) {
         const allList = roadmap.map(task => transformName(task[key]));
