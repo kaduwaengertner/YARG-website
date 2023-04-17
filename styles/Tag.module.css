@@ -9,4 +9,5 @@
     font-size: 0.9em;
     text-align: center;
     user-select: none;
+    transition: opacity .2s;
 }
