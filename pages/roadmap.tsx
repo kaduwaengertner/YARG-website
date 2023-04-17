@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer'
 import MenuHeader from '@/components/MenuHeader'
 import PageTitle from '@/components/PageTitle';
+import SearchBar, { searchCheck } from '@/components/SearchBar';
 import Tag from '@/components/Tag';
 import { Roadmap, getRoadmap } from '@/lib/roadmap';
 import styles from '@/styles/Roadmap.module.css';
@@ -32,6 +33,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
     const priorityList = getList('taskSize');
     const statusList = getList('status');
     
+    const [searchFilter, setSearchFilter] = useState("");
     const [categoryFilter, setCategoryFilter] = useState(categoryList);
     const [priorityFilter, setPriorityFilter] = useState(priorityList);
     const [statusFilter, setStatusFilter] = useState(statusList);
@@ -79,6 +81,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         </Head>
 
         <MenuHeader />
+        <SearchBar setter={setSearchFilter}/>
 
         <main>
             <PageTitle title="Roadmap" description="Upcoming features and plans" />
@@ -147,6 +150,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                     { 
                         roadmap
                         .filter(task => 
+                            searchCheck(task.task, searchFilter) &&
                             statusFilter.includes(transformName(task.status)) &&
                             categoryFilter.includes(transformName(task.type)) &&
                             priorityFilter.includes(transformName(task.taskSize))
