@@ -98,7 +98,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
             <PageTitle title="Roadmap" description="Upcoming features and plans">
                 <PageButtons>
                     <SearchBar setter={setSearchFilter}/>
-                    <PageButton onClick={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
+                    <PageButton disabled={!filterView} onClick={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
                 </PageButtons>
             </PageTitle>
 

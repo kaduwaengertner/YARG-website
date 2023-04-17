@@ -24,9 +24,26 @@
 
 .buttons {
     display: flex;
+    gap: 20px;
 }
 
 .button {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     cursor: pointer;
     user-select: none;
+    
+    border: solid 2px var(--feature-border);
+    background: var(--feature-background);
+    color: var(--accent);
+}
+
+.button[data-disabled="true"] {
+    opacity: 0.5;
 }

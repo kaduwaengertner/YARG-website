@@ -32,12 +32,13 @@ const PageButtons: React.FC<ButtonsProps> = ({children}) => {
 }
 
 type ButtonProp = {
+  disabled?: boolean,
   onClick?: MouseEventHandler,
   children?: React.ReactNode
 }
 
-const PageButton: React.FC<ButtonProp> = ({children, onClick}) => {
-  return <div onClick={onClick} className={styles.button}>
+const PageButton: React.FC<ButtonProp> = ({children, onClick, disabled}) => {
+  return <div onClick={onClick} className={styles.button} data-disabled={!!disabled}>
     {children}
   </div>
 }
