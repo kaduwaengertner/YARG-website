@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styles from '@/styles/PageTitle.module.css'
 
 type Props = {
@@ -32,11 +32,12 @@ const PageButtons: React.FC<ButtonsProps> = ({children}) => {
 }
 
 type ButtonProp = {
+  onClick?: MouseEventHandler,
   children?: React.ReactNode
 }
 
-const PageButton: React.FC<ButtonProp> = ({children}) => {
-  return <div className={styles.button}>
+const PageButton: React.FC<ButtonProp> = ({children, onClick}) => {
+  return <div onClick={onClick} className={styles.button}>
     {children}
   </div>
 }

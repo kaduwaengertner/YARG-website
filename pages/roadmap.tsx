@@ -35,6 +35,8 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
     const priorityList = getList('taskSize');
     const statusList = getList('status');
     
+    /* Filters */
+    const [filterView, setFilterView] = useState(false);
     const [searchFilter, setSearchFilter] = useState("");
     const [categoryFilter, setCategoryFilter] = useState(categoryList);
     const [priorityFilter, setPriorityFilter] = useState(priorityList);
@@ -60,6 +62,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         }
     }
 
+    const toggleFilterView = (toggle?: boolean) => setFilterView(current => typeof toggle === "boolean" ? toggle : !current);
     const toggleCategory = (name: string, toggle?: boolean) => toggleFilter(setCategoryFilter, name, toggle);
     const togglePriority = (name: string, toggle?: boolean) => toggleFilter(setPriorityFilter, name, toggle);
     const toggleStatus = (name: string, toggle?: boolean) => toggleFilter(setStatusFilter, name, toggle);
@@ -95,10 +98,11 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
             <PageTitle title="Roadmap" description="Upcoming features and plans">
                 <PageButtons>
                     <SearchBar setter={setSearchFilter}/>
-                    <PageButton><FontAwesomeIcon icon={faFilter} /></PageButton>
+                    <PageButton onClick={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
                 </PageButtons>
             </PageTitle>
 
+            {filterView && (
             <div className={styles.filterGrid}>
                 <div>
                     <div className={styles.title}>
@@ -150,6 +154,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                     })}
                 </div>
             </div>
+            )}
 
 
             <table className={styles.table}>

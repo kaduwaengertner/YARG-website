@@ -25,3 +25,8 @@
 .buttons {
     display: flex;
 }
+
+.button {
+    cursor: pointer;
+    user-select: none;
+}
