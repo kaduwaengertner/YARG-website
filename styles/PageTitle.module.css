@@ -42,6 +42,8 @@
     border: solid 2px var(--feature-border);
     background: var(--feature-background);
     color: var(--accent);
+    opacity: 1;
+    transition: opacity .2s;
 }
 
 .button[data-disabled="true"] {
