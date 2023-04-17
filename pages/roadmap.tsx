@@ -1,11 +1,13 @@
 import Footer from '@/components/Footer'
 import MenuHeader from '@/components/MenuHeader'
-import PageTitle from '@/components/PageTitle';
+import PageTitle, { PageButton, PageButtons } from '@/components/PageTitle';
 import SearchBar, { searchCheck } from '@/components/SearchBar';
 import Tag from '@/components/Tag';
 import { Roadmap, getRoadmap } from '@/lib/roadmap';
 import styles from '@/styles/Roadmap.module.css';
 import { transformName } from '@/util/StringUtils';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head'
 import { Dispatch, SetStateAction, useState } from 'react';
 
@@ -88,10 +90,14 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         </Head>
 
         <MenuHeader />
-        <SearchBar setter={setSearchFilter}/>
 
         <main>
-            <PageTitle title="Roadmap" description="Upcoming features and plans" />
+            <PageTitle title="Roadmap" description="Upcoming features and plans">
+                <PageButtons>
+                    <SearchBar setter={setSearchFilter}/>
+                    <PageButton><FontAwesomeIcon icon={faFilter} /></PageButton>
+                </PageButtons>
+            </PageTitle>
 
             <div className={styles.filterGrid}>
                 <div>

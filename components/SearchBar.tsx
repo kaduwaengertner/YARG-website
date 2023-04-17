@@ -1,6 +1,8 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import styles from '@/styles/SearchBar.module.css';
 import { transformName } from '@/util/StringUtils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
     setter: Dispatch<SetStateAction<string>>,
@@ -16,6 +18,7 @@ const SearchBar: React.FC<Props> = ({setter}) => {
     }
 
     return (<div className={styles.search}>
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
         <input type="text" onChange={onChange}/>
     </div>);
 }
