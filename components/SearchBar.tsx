@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import styles from '@/styles/SearchBar.module.css';
 import { transformName } from '@/util/StringUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,17 +10,22 @@ type Props = {
 
 const SearchBar: React.FC<Props> = ({setter}) => {
 
+    const [ text, setText ] = useState("");
+
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const raw = event.target.value;
         const search = transformName(raw);
 
+        setText(search);
         return setter(search);
     }
 
-    return (<div className={styles.search}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
-        <input type="text" onChange={onChange}/>
-    </div>);
+    return (<label>
+            <div className={styles.search} data-active={text.length > 0}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <input type="text" onChange={onChange}/>
+            </div>
+        </label>);
 }
 
 export default SearchBar;
