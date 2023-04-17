@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (<>
     <style jsx global>{`
     
-    html {
+    html, input {
       font-family: ${barlow.style.fontFamily};
     }
     
