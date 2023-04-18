@@ -14,9 +14,9 @@ const MenuHeader: React.FC = () => {
         </Link>
 
         <div className={styles.links}>
-            <Link className={styles.link} href="/features">Features</Link>
+            {/* <Link className={styles.link} href="/features">Features</Link> */}
             <Link className={styles.link} href="/roadmap">Roadmap</Link>
-            <Link className={styles.link} href="/contributors">Contributors</Link>
+            {/* <Link className={styles.link} href="/contributors">Contributors</Link> */}
 
             <DownloadButton />
         </div>
