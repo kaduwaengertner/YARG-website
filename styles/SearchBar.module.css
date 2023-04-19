@@ -5,7 +5,7 @@
 
     background-color: var(--feature-background);
     border: solid 2px var(--feature-border);
-    color: var(--accent);
+    color: rgb(var(--accent));
     opacity: 0.5;
     transition: opacity .2s;
     
@@ -19,7 +19,7 @@
     border: none;
     outline-color: transparent;
     outline-style: solid;
-    color: var(--accent);
+    color: rgb(var(--accent));
     font-weight: 600;
     font-size: 0.9em;
 }

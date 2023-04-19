@@ -15,7 +15,7 @@ const DownloadButton: React.FC = () => {
         DOWNLOAD {version && version.version}
         <style jsx>{`
             .download {
-                background: var(--accent);
+                background: rgb(var(--accent));
                 color: var(--background);
                 padding: 10px 20px;
                 border-radius: 50px;

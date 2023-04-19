@@ -13,7 +13,7 @@
 
 .description {
     font-size: 1.3em;
-    color: var(--accent);
+    color: rgb(var(--accent));
 }
 
 .children {
@@ -41,7 +41,7 @@
     
     border: solid 2px var(--feature-border);
     background: var(--feature-background);
-    color: var(--accent);
+    color: rgb(var(--accent));
     opacity: 1;
     transition: opacity .2s;
 }

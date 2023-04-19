@@ -11,7 +11,7 @@ type Props = {
     children?: React.ReactNode
 }
 
-const Tag: React.FC<Props> = ({background = "var(--tag-background)", color = "var(--accent)", style = {}, className, children, onClick, attributes}) => {
+const Tag: React.FC<Props> = ({background = "var(--tag-background)", color = "rgb(var(--accent))", style = {}, className, children, onClick, attributes}) => {
 
     return <div onClick={onClick} style={{background, color, ...style}} className={`${styles.tag} ${className}`} {...attributes}>
         {children}

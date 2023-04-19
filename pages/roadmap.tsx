@@ -189,7 +189,7 @@ type TagColor = {
 function getPriorityColor(taskSize: string): TagColor {
     return {
         background: "var(--tag-background)",
-        color: "var(--accent)"
+        color: "rgb(var(--accent))"
     }
 }
 
@@ -219,6 +219,6 @@ function getStatusColor(status: string): TagColor {
 
     return {
         background: "var(--tag-background)",
-        color: "var(--accent)"
+        color: "rgb(var(--accent))"
     }
 }

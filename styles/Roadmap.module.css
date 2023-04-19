@@ -39,7 +39,7 @@
 .header {
     --borderRadius: 50px;
     background: var(--feature-background);
-    color: var(--accent);
+    color: rgb(var(--accent));
 }
 
 .header th {
