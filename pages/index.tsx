@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import Footer from '@/components/Footer'
-import Logo from '@/components/Logo'
+import { FullLogo } from '@/components/Logo'
 import { CSSProperties } from 'react'
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
       </Head>
 
       <header className={styles.header}>
-        <Logo className={styles.logo}/>
+        <FullLogo className={styles.logo}/>
         <div className={styles.video}></div>
         <div className={styles.buttons}>
           <a href="https://github.com/EliteAsian123/YARG/releases/latest">
