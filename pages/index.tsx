@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import Footer from '@/components/Footer'
+import Logo from '@/components/Logo'
+import { CSSProperties } from 'react'
 
 export default function Home() {
   return (
@@ -14,7 +16,32 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
       </Head>
+
+      <header className={styles.header}>
+        <Logo className={styles.logo}/>
+        <div className={styles.video}></div>
+        <div className={styles.buttons}>
+          <a href="https://github.com/EliteAsian123/YARG/releases/latest">
+            <HeaderButton background="rgb(var(--accent))" style={{textTransform: "none"}}>DOWNLOAD v0.8.2</HeaderButton>
+          </a>
+          <a href="https://discord.gg/sqpu4R552r" target='_blank'>
+            <HeaderButton>Join our Discord</HeaderButton>
+          </a>
+        </div>
+      </header>
+
       <Footer/>
     </>
   )
+}
+
+type HeaderButtonProps = {
+  background?: string,
+  color?: string,
+  children?: React.ReactNode
+  style?: CSSProperties,
+}
+
+const HeaderButton: React.FC<HeaderButtonProps> = ({background, color = "var(--background)", children, style}) => {
+  return <button style={{...style, background, color}}>{children}</button>;
 }
