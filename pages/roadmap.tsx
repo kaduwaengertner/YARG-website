@@ -19,7 +19,7 @@ export async function getStaticProps() {
         props: {
             roadmap
         },
-        revalidate: 3600,
+        revalidate: 1800,
     }
 };
 
