@@ -13,11 +13,16 @@
     margin: 0 auto;
     inset: auto 0 0;
     background: #000;
+    overflow: hidden;
 
     width: 1070px;
     height: 570px;
     --borderRadius: 30px;
     border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
+}
+
+.header > .video > :is(img) {
+    width: 100%;
 }
 
 .header::after {
