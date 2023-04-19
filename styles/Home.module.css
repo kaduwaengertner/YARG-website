@@ -2,6 +2,7 @@
     position: relative;
     --height: 880px;
     height: var(--height);
+    margin-bottom: 50px;
     background: radial-gradient(
         circle calc(var(--height) * 1.25) at center bottom, 
         var(--home-header-gradient) 0%, 

@@ -5,6 +5,8 @@ import Footer from '@/components/Footer'
 import { FullLogo } from '@/components/Logo'
 import { CSSProperties } from 'react'
 import gameScreenshot from '@/public/game-screenshot.png';
+import HomeComponent from '@/components/HomeComponent'
+import Tag from '@/components/Tag'
 export default function Home() {
   return (
     <>
@@ -33,6 +35,23 @@ export default function Home() {
         </div>
       </header>
 
+      <main>
+        <HomeComponent title="Latest Updates" description="Latest tweets by Elite with #YARG hashtag?"></HomeComponent>
+
+
+        <HomeComponent title="Live">
+          <a href="https://www.twitch.tv/directory/game/YARG" target="_blank">
+            <Tag background="rgb(var(--accent))" color="var(--background)" style={{fontSize: "1em"}}>Browse on Twitch</Tag>
+          </a>
+        </HomeComponent>
+        <div className={styles.lives}>
+          <Live></Live>
+          <Live></Live>
+          <Live></Live>
+        </div>
+
+      </main>
+
       <Footer/>
     </>
   )
@@ -47,4 +66,12 @@ type HeaderButtonProps = {
 
 const HeaderButton: React.FC<HeaderButtonProps> = ({background, color = "var(--background)", children, style}) => {
   return <button style={{...style, background, color}}>{children}</button>;
+}
+
+type LiveProps = {
+
+}
+
+const Live: React.FC<LiveProps> = ({}) => {
+  return <div className={styles.live}></div>
 }
