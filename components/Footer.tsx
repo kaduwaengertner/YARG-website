@@ -16,7 +16,10 @@ const Footer: React.FC = () => {
             <a className={styles.github} href="https://github.com/EliteAsian123/YARG"><FontAwesomeIcon icon={faGithub} /></a>
         </div>
         <div className={styles.text}>
-            Made with a lot of <FontAwesomeIcon icon={faHeart} /> by <span className={styles.contributorsCount}>{contributors?.length || ""}</span> amazing people
+            Made with a lot of <FontAwesomeIcon icon={faHeart} color="#FF9494" /> by <span className={styles.contributorsCount}>{contributors?.length || ""}</span> amazing people
+        </div>
+        <div className={styles.text}>
+            Website by <a href="https://twitter.com/pantotone">@Pantotone</a> and <a href="https://twitter.com/kaduwaengertner" target='_blank'>@KaduWaengertner</a>
         </div>
     </footer>);
 }
