@@ -51,7 +51,7 @@ export default function Home({version}: InferGetStaticPropsType<typeof getStatic
         </div>
         <div className={styles.buttons}>
           <a href="https://github.com/EliteAsian123/YARG/releases/latest">
-            <HeaderButton background="rgb(var(--accent))" style={{textTransform: "none"}}>DOWNLOAD {version && version.version}</HeaderButton>
+            <HeaderButton background="rgb(var(--accent))" style={{textTransform: "none"}}>DOWNLOAD {version}</HeaderButton>
           </a>
           <a href="https://discord.gg/sqpu4R552r" target='_blank'>
             <HeaderButton>Join our Discord</HeaderButton>
