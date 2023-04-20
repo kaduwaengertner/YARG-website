@@ -10,9 +10,24 @@ import HomeComponent from '@/components/HomeComponent'
 import Tag from '@/components/Tag'
 import useSWR from '@/hooks/useSWR'
 import type { Version } from './api/version'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 
-export default function Home() {
-  const { data: version } = useSWR<Version>('api/version');
+export const getStaticProps: GetStaticProps = async () => {
+
+  const latestVersion = await fetch(
+      "https://api.github.com/repos/EliteAsian123/YARG/releases/latest", {
+      headers: { "User-Agent": "YARG" }
+  }).then(res => res.json());
+
+  return {
+      props: {
+          version: latestVersion["tag_name"] as string,
+      },
+      revalidate: 1800,
+  }
+};
+
+export default function Home({version}: InferGetStaticPropsType<typeof getStaticProps>) {
 
   return (
     <>
