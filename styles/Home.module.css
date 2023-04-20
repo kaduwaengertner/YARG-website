@@ -17,7 +17,7 @@
     overflow: hidden;
 
     max-width: 1070px;
-    height: 570px;
+    max-height: 570px;
     --borderRadius: 30px;
     border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
 }
@@ -115,7 +115,7 @@
 }
 
 @keyframes header_video_opening {
-    from { height: 0px; }
+    from { max-height: 0px; }
 }
 
 @keyframes header_logo_opening {
