@@ -1,0 +1,126 @@
+.header {
+    position: relative;
+    --height: 880px;
+    height: var(--height);
+    margin-bottom: 50px;
+    background: radial-gradient(
+        circle calc(var(--height) * 1.25) at center bottom, 
+        var(--home-header-gradient) 0%, 
+        transparent 65%);
+}
+
+.header > .video {
+    position: absolute;
+    margin: 0 auto;
+    inset: auto 0 0;
+    background: #000;
+    overflow: hidden;
+
+    width: 1070px;
+    height: 570px;
+    --borderRadius: 30px;
+    border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
+}
+
+.header > .video > :is(img, video) {
+    width: 100%;
+}
+
+.header > .video > .overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.header::after {
+    content: '';
+    background: linear-gradient(90deg, transparent 0%, var(--home-header-separator) 50%, transparent 100%);
+    
+    position: absolute;
+    inset: auto 200px 0px;
+    height: 2px;
+    
+    transition: inset 1s ease;
+}
+
+.header > .logo {
+    width: 512px;
+    position: absolute;
+    inset: 0;
+    --margin: 125px;
+    margin: var(--margin) auto;
+    z-index: 2;
+    filter: drop-shadow(0px 0px 50px rgba(255,255,255,0.05)) drop-shadow(0px 50px 50px rgba(0,0,0,.6));
+}
+
+.header > .buttons {
+    position: absolute;
+    width: fit-content;
+    inset: auto 0 150px;
+    margin: 0 auto;
+
+    display: flex;
+    gap: 50px;
+}
+
+.header > .buttons button {
+    border-radius: 100px;
+    padding: 15px 40px;
+
+    background: var(--foreground);
+    border: none;
+    color: var(--background);
+    cursor: pointer;
+    user-select: none;
+    
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-weight: 700;
+
+    box-shadow: 0px 0px 50px rgb(var(--accent), .5);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .header {
+        animation: header_background_opening 2s;
+    }
+
+    .header::after {
+        animation: header_separator_opening 1s;
+    }
+
+    .header > .video {
+        animation: header_video_opening 1s;
+    }
+
+    .header > .logo {
+        margin: calc(var(--margin) + 50px) auto;
+        opacity: 0;
+        animation: header_logo_opening 1s 0.8s forwards;
+    }
+}
+
+@keyframes header_background_opening {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes header_separator_opening {
+    from { inset: auto 100% 0px; }
+}
+
+@keyframes header_video_opening {
+    from { height: 0px; }
+}
+
+@keyframes header_logo_opening {
+    from { 
+        margin: calc(var(--margin) + 50px) auto; 
+        opacity: 0;
+    }
+
+    to { 
+        margin: var(--margin) auto; 
+        opacity: 1;
+    }
+}

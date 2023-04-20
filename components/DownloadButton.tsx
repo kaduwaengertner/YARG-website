@@ -1,9 +1,5 @@
 import useSWR from '@/hooks/useSWR';
-
-type Version = {
-    version: string,
-    link: string
-};
+import type { Version } from '@/pages/api/version';
 
 const DownloadButton: React.FC = () => {
 

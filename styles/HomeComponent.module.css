@@ -1,0 +1,23 @@
+.titleBox {
+    margin: 70px auto;
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 1.3em;
+    color: rgb(var(--accent));
+}
+
+.children {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}

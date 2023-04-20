@@ -17,4 +17,41 @@ const Logo: React.FC<Props> = (props) => (
   </svg>
 );
 
-export default Logo
+const FullLogo: React.FC<Props> = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512.97 236.82"
+    {...props}
+  >
+    <defs>
+      <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
+        <stop offset="0%" stopColor="#ccc" />
+        <stop offset="35%" stopColor="#fff" />
+      </linearGradient>
+      <filter id="b">
+        <feFlood floodColor="#fff" />
+        <feComposite in2="SourceAlpha" operator="out" />
+        <feMorphology operator="dilate" radius={6} />
+        <feGaussianBlur result="blur" stdDeviation={4} />
+        <feComposite in2="SourceGraphic" operator="atop" result="inner" />
+        {/* <feTurbulence baseFrequency={10} result="fNoise" type="fractalNoise" />
+        <feColorMatrix type="saturate" values={"0"} />
+        <feComposite
+          in="inner"
+          in2="clipNoise"
+          k1={0.5}
+          k2={1}
+          operator="arithmetic"
+        /> */}
+      </filter>
+    </defs>
+    <g fill="url(#a)" filter="url(#b)">
+      <path d="m101.63 13.87 19.55 21.73-23.96 26.27v123.71l8.07-8.86v-.15l.02-.02v-75.57l79.41-87.11h-83.09zM81.11 79.56v123.71l8.06-8.85V70.7l-8.06 8.86zM64.97 83.08 49.45 65.96H0l64.97 71.54v83.48l8.07-8.86V91.99l-8.07-8.91z" />
+      <path d="M123.13 157.12V108L222.01 0v170.68h-38.04V90.1l-60.84 67.01ZM239.76 170.69h37.02l.29-55.74h19.37l109.6 121.87v-51.19l-67.96-74.43c13.05-5.54 24.55-16.09 24.55-47.3 0-26.98-23.09-48.41-50.07-49.69l-7.15-.34h-65.64v156.82Zm62.78-86.88-3.07.16h-22.55V42.6h21.69l5.01.6c4.97.59 9.47 2.76 12.97 6 3.5 3.23 5.99 7.56 6.96 12.46 0 11.78-9.23 21.51-21.01 22.14Z" />
+      <path d="m471.95 113.96-2.75 4.09c-14.22 21.16-43.89 24.82-62.86 7.8 0 0-16.23-10.91-16.23-34.09-.12-11.82 1.82-19.71 16.23-34.1s48.64-13.36 62.86 7.8l2.77 4.13h40.98l-6.82-13.11c-4.18-8.02-9.45-14.94-15.5-20.73-15.03-14.41-34.91-21.88-54.9-21.88-22.02 0-44.19 9.05-60.21 27.86-12.23 14.36-18.01 32.28-17.33 50.03-.68 17.75 5.12 35.68 17.33 50.02 16.02 18.81 38.19 27.86 60.21 27.86 19.99 0 43.95-6.7 60.77-28.18l16.45 18.41V91.75H452.1l19.84 22.21Z" />
+    </g>
+  </svg>
+);
+
+export default Logo;
+export { Logo, FullLogo };

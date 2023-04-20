@@ -1,5 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+type Version = {
+    version: string,
+    link: string
+};
+
 export default async function handler(req: NextApiRequest,res: NextApiResponse) {
 
     try {
@@ -15,4 +20,6 @@ export default async function handler(req: NextApiRequest,res: NextApiResponse) 
         res.status(400).json({version: "", link: "https://github.com/EliteAsian123/YARG/releases/latest"})
     }
 
-}
+};
+
+export type { Version };
