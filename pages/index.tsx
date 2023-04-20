@@ -45,10 +45,10 @@ export default function Home() {
       </header>
 
       <main>
-        <HomeComponent title="Latest Updates" description="Latest tweets by Elite with #YARG hashtag?"></HomeComponent>
+        {/* <HomeComponent title="Latest Updates" description="Latest tweets by Elite with #YARG hashtag?"></HomeComponent> */}
 
 
-        <HomeComponent title="Live">
+        {/* <HomeComponent title="Live">
           <a href="https://www.twitch.tv/directory/game/YARG" target="_blank">
             <Tag background="rgb(var(--accent))" color="var(--background)" style={{fontSize: "1em"}}>Browse on Twitch</Tag>
           </a>
@@ -57,7 +57,7 @@ export default function Home() {
           <Live></Live>
           <Live></Live>
           <Live></Live>
-        </div>
+        </div> */}
 
       </main>
 
