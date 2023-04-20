@@ -7,7 +7,12 @@ import { CSSProperties } from 'react'
 import gameScreenshot from '@/public/game-screenshot.png';
 import HomeComponent from '@/components/HomeComponent'
 import Tag from '@/components/Tag'
+import useSWR from '@/hooks/useSWR'
+import type { Version } from './api/version'
+
 export default function Home() {
+  const { data: version } = useSWR<Version>('api/version');
+
   return (
     <>
       <Head>
@@ -27,7 +32,7 @@ export default function Home() {
         </div>
         <div className={styles.buttons}>
           <a href="https://github.com/EliteAsian123/YARG/releases/latest">
-            <HeaderButton background="rgb(var(--accent))" style={{textTransform: "none"}}>DOWNLOAD v0.8.2</HeaderButton>
+            <HeaderButton background="rgb(var(--accent))" style={{textTransform: "none"}}>DOWNLOAD {version && version.version}</HeaderButton>
           </a>
           <a href="https://discord.gg/sqpu4R552r" target='_blank'>
             <HeaderButton>Join our Discord</HeaderButton>
