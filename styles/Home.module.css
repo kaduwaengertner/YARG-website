@@ -17,7 +17,7 @@
     overflow: hidden;
 
     max-width: 1070px;
-    max-height: 570px;
+    height: 570px;
     --borderRadius: 30px;
     border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
 }
