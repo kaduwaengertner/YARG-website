@@ -22,8 +22,13 @@
     border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
 }
 
-.header > .video > :is(img) {
+.header > .video > :is(img, video) {
     width: 100%;
+}
+
+.header > .video > .overlay {
+    position: absolute;
+    inset: 0;
 }
 
 .header::after {

@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import { FullLogo } from '@/components/Logo'
 import { CSSProperties } from 'react'
 import gameScreenshot from '@/public/game-screenshot.png';
+import videoOverlay from '@/public/video-overlay.png';
 import HomeComponent from '@/components/HomeComponent'
 import Tag from '@/components/Tag'
 import useSWR from '@/hooks/useSWR'
@@ -28,7 +29,10 @@ export default function Home() {
       <header className={styles.header}>
         <FullLogo className={styles.logo}/>
         <div className={styles.video}>
-          <Image src={gameScreenshot} alt="In-game Screenshot"/>
+          <video autoPlay muted loop playsInline poster={gameScreenshot.src}>
+            <source src="/ingame-video.webm" type="video/webm" />
+          </video>
+          <Image src={videoOverlay} alt="In-game Video" className={styles.overlay}/>
         </div>
         <div className={styles.buttons}>
           <a href="https://github.com/EliteAsian123/YARG/releases/latest">
