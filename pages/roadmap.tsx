@@ -67,6 +67,19 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
     const togglePriority = (name: string, toggle?: boolean) => toggleFilter(setPriorityFilter, name, toggle);
     const toggleStatus = (name: string, toggle?: boolean) => toggleFilter(setStatusFilter, name, toggle);
 
+    /* Progress bar */
+    const taskPoints: number[] = roadmap.map(task => {
+        const status = transformName(task.status);
+        if(status === "done") return 2;
+        if(status === "doing") return 1;
+        return 0;
+    });
+
+    const sumPoints = taskPoints.reduce((acc, current) => acc + current, 0)
+    const totalPoints = roadmap.length * 2;
+    const percentagePoints = (sumPoints / totalPoints) * 100;
+
+
     const Row: React.FC<Roadmap> = (task) => {
 
         const statusColor = getStatusColor(task.status);
@@ -101,6 +114,8 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                     <PageButton disabled={!filterView} onClick={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
                 </PageButtons>
             </PageTitle>
+
+            {`Roadmap to v1: ${percentagePoints.toFixed()}% tasks completed! (${sumPoints}/${totalPoints}) / Done = 2, Doing = 1, ToDo/Stalled = 0`}
 
             {filterView && (
             <div className={styles.filterGrid}>
