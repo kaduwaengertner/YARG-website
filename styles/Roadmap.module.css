@@ -25,6 +25,7 @@
     max-width: var(--max-width);
     border-collapse:separate;
     border-spacing: 0;
+    table-layout: fixed;
 }
 
 .table th {
@@ -59,6 +60,15 @@
     border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
 }
 
+.header th:nth-child(2),
+.header th:nth-child(3) {
+    width: 180px;
+}
+
+.header th:nth-child(4) {
+    width: 150px;
+}
+
 .table td > span {
     margin: 5px 0px;
 }
@@ -72,4 +82,5 @@ td > span.title {
 
 td > span.description {
     color: var(--foreground-35);
+    word-wrap: break-word;
 }
