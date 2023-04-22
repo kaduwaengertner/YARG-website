@@ -20,12 +20,12 @@ const SearchBar: React.FC<Props> = ({setter}) => {
         return setter(search);
     }
 
-    return (<label>
-            <div className={styles.search} data-active={text.length > 0}>
+    return (
+        <label className={styles.search} data-active={text.length > 0}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                 <input type="text" onChange={onChange}/>
-            </div>
-        </label>);
+        </label>
+    );
 }
 
 export default SearchBar;
