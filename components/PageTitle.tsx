@@ -48,7 +48,7 @@ const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled
     }
   };
 
-  return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick} onKeyDown={onKeyDown} className={styles.button} data-disabled={!!disabled}>
+  return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick || onAction as MouseEventHandler} onKeyDown={onKeyDown} className={styles.button} data-disabled={!!disabled}>
     {children}
   </div>
 }

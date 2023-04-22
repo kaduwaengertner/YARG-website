@@ -22,7 +22,7 @@ const Tag: React.FC<Props> = ({background = "var(--tag-background)", color = "rg
         }
     };
 
-    return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick} onKeyDown={onKeyDown} style={{background, color, ...style}} className={`${styles.tag} ${className}`} {...attributes}>
+    return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick || onAction as MouseEventHandler} onKeyDown={onKeyDown} style={{background, color, ...style}} className={`${styles.tag} ${className}`} {...attributes}>
         {children}
         <style jsx>{`
             .clickable {
