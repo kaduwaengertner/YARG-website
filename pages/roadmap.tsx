@@ -75,13 +75,13 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         return (<>
     
         <tr>
-            <td>
+            <td data-cell="task">
                 <span className={styles.title}>{task.task}</span>
                 <span className={styles.description}>{task.description}</span>
             </td>
-            <td><Tag className="clickable" onClick={() => {setCategoryFilter([transformName(task.type)])}} >{task.type}</Tag></td>
-            <td><Tag className="clickable" onClick={() => {setPriorityFilter([transformName(task.taskSize)])}} background={priorityColor.background} color={priorityColor.color}>{task.taskSize}</Tag></td>
-            <td><Tag className="clickable" onClick={() => {setStatusFilter([transformName(task.status)])}} background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
+            <td data-cell="category"><Tag className="clickable" onClick={() => {setCategoryFilter([transformName(task.type)])}} >{task.type}</Tag></td>
+            <td data-cell="priority"><Tag className="clickable" onClick={() => {setPriorityFilter([transformName(task.taskSize)])}} background={priorityColor.background} color={priorityColor.color}>{task.taskSize}</Tag></td>
+            <td data-cell="status"><Tag className="clickable" onClick={() => {setStatusFilter([transformName(task.status)])}} background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
         </tr>
     
         </>)
@@ -107,8 +107,10 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                 <div>
                     <div className={styles.title}>
                         Category List
-                        <Tag className="clickable" onClick={() => {setCategoryFilter(categoryList)}}>All</Tag>
-                        <Tag className="clickable" onClick={() => {setCategoryFilter([])}}>None</Tag>
+                        <div className={styles.titleButtons}>
+                            <Tag className="clickable" onClick={() => {setCategoryFilter(categoryList)}}>All</Tag>
+                            <Tag className="clickable" onClick={() => {setCategoryFilter([])}}>None</Tag>
+                        </div>
                     </div>
 
                     {categoryList.map(category => {
@@ -123,8 +125,10 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                 <div>
                     <div className={styles.title}>
                         Priority List
-                        <Tag className="clickable" onClick={() => {setPriorityFilter(priorityList)}}>All</Tag>
-                        <Tag className="clickable" onClick={() => {setPriorityFilter([])}}>None</Tag>
+                        <div className={styles.titleButtons}>
+                            <Tag className="clickable" onClick={() => {setPriorityFilter(priorityList)}}>All</Tag>
+                            <Tag className="clickable" onClick={() => {setPriorityFilter([])}}>None</Tag>
+                        </div>
                     </div>
 
                     {priorityList.map(priority => {
@@ -140,8 +144,10 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                 <div>
                     <div className={styles.title}>
                         Status List
-                        <Tag className="clickable" onClick={() => {setStatusFilter(statusList)}}>All</Tag>
-                        <Tag className="clickable" onClick={() => {setStatusFilter([])}}>None</Tag>
+                        <div className={styles.titleButtons}>
+                            <Tag className="clickable" onClick={() => {setStatusFilter(statusList)}}>All</Tag>
+                            <Tag className="clickable" onClick={() => {setStatusFilter([])}}>None</Tag>
+                        </div>
                     </div>
 
                     {statusList.map(status => {

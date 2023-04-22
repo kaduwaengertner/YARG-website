@@ -20,6 +20,11 @@
     margin: 10px 0px;
 }
 
+.titleButtons {
+    display: flex;
+    gap: 5px;
+}
+
 .table {
     width: 100%;
     max-width: var(--max-width);
@@ -83,4 +88,53 @@ td > span.title {
 td > span.description {
     color: var(--foreground-35);
     word-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+
+    .filterGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .filterGrid .title {
+        justify-content: space-between;
+    }
+
+    .header th {
+        position: absolute;
+        width: 1px !important;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(0);
+        border: transparent 0px;
+        padding: 0;
+    }
+
+    .table td {
+        display: block;
+    }
+    
+    .table td:not(:last-child) {
+        --margin: 25px;
+        padding: var(--margin) 0px;
+        margin: 0px var(--margin);
+    }
+
+    .table td::before {
+        content: attr(data-cell);
+        text-transform: uppercase;
+        color: rgb(var(--accent));
+        font-weight: 700;
+    }
+
+    .table td:first-child {
+        padding-top: 50px;
+    }
+
+    .table td:not(:first-child) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
