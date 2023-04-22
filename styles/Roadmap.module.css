@@ -100,6 +100,11 @@ td > span.description {
         justify-content: space-between;
     }
 
+    .filterGrid > div > div {
+        font-size: 1em;
+        padding: 15px 25px;
+    }
+
     .header th {
         position: absolute;
         width: 1px !important;
