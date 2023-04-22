@@ -75,13 +75,13 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
         return (<>
     
         <tr>
-            <td>
+            <td data-cell="task">
                 <span className={styles.title}>{task.task}</span>
                 <span className={styles.description}>{task.description}</span>
             </td>
-            <td><Tag className="clickable" onClick={() => {setCategoryFilter([transformName(task.type)])}} >{task.type}</Tag></td>
-            <td><Tag className="clickable" onClick={() => {setPriorityFilter([transformName(task.taskSize)])}} background={priorityColor.background} color={priorityColor.color}>{task.taskSize}</Tag></td>
-            <td><Tag className="clickable" onClick={() => {setStatusFilter([transformName(task.status)])}} background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
+            <td data-cell="category"><Tag className="clickable" onAction={() => {setCategoryFilter([transformName(task.type)])}} >{task.type}</Tag></td>
+            <td data-cell="priority"><Tag className="clickable" onAction={() => {setPriorityFilter([transformName(task.taskSize)])}} background={priorityColor.background} color={priorityColor.color}>{task.taskSize}</Tag></td>
+            <td data-cell="status"><Tag className="clickable" onAction={() => {setStatusFilter([transformName(task.status)])}} background={statusColor.background} color={statusColor.color}>{task.status}</Tag></td>
         </tr>
     
         </>)
@@ -98,7 +98,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
             <PageTitle title="Roadmap" description="Upcoming features and plans">
                 <PageButtons>
                     <SearchBar setter={setSearchFilter}/>
-                    <PageButton disabled={!filterView} onClick={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
+                    <PageButton disabled={!filterView} onAction={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
                 </PageButtons>
             </PageTitle>
 
@@ -107,13 +107,15 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                 <div>
                     <div className={styles.title}>
                         Category List
-                        <Tag className="clickable" onClick={() => {setCategoryFilter(categoryList)}}>All</Tag>
-                        <Tag className="clickable" onClick={() => {setCategoryFilter([])}}>None</Tag>
+                        <div className={styles.titleButtons}>
+                            <Tag className="clickable" onAction={() => {setCategoryFilter(categoryList)}}>All</Tag>
+                            <Tag className="clickable" onAction={() => {setCategoryFilter([])}}>None</Tag>
+                        </div>
                     </div>
 
                     {categoryList.map(category => {
                         return (
-                            <Tag key={category} onClick={() => {toggleCategory(category)}} attributes={{"data-active": categoryFilter.includes(transformName(category))}} className="clickable">
+                            <Tag key={category} onAction={() => {toggleCategory(category)}} attributes={{"data-active": categoryFilter.includes(transformName(category))}} className="clickable">
                                 <span>{category}</span>
                             </Tag>
                         )
@@ -123,14 +125,16 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                 <div>
                     <div className={styles.title}>
                         Priority List
-                        <Tag className="clickable" onClick={() => {setPriorityFilter(priorityList)}}>All</Tag>
-                        <Tag className="clickable" onClick={() => {setPriorityFilter([])}}>None</Tag>
+                        <div className={styles.titleButtons}>
+                            <Tag className="clickable" onAction={() => {setPriorityFilter(priorityList)}}>All</Tag>
+                            <Tag className="clickable" onAction={() => {setPriorityFilter([])}}>None</Tag>
+                        </div>
                     </div>
 
                     {priorityList.map(priority => {
                         const color = getPriorityColor(priority);
                         return (
-                            <Tag key={priority} onClick={() => {togglePriority(priority)}} attributes={{"data-active": priorityFilter.includes(transformName(priority))}} className="clickable" background={color.background} color={color.color}>
+                            <Tag key={priority} onAction={() => {togglePriority(priority)}} attributes={{"data-active": priorityFilter.includes(transformName(priority))}} className="clickable" background={color.background} color={color.color}>
                                 <span>{priority}</span>
                             </Tag>
                         )
@@ -140,14 +144,16 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
                 <div>
                     <div className={styles.title}>
                         Status List
-                        <Tag className="clickable" onClick={() => {setStatusFilter(statusList)}}>All</Tag>
-                        <Tag className="clickable" onClick={() => {setStatusFilter([])}}>None</Tag>
+                        <div className={styles.titleButtons}>
+                            <Tag className="clickable" onAction={() => {setStatusFilter(statusList)}}>All</Tag>
+                            <Tag className="clickable" onAction={() => {setStatusFilter([])}}>None</Tag>
+                        </div>
                     </div>
 
                     {statusList.map(status => {
                         const color = getStatusColor(status);
                         return (
-                            <Tag key={status} onClick={() => {toggleStatus(status)}} attributes={{"data-active": statusFilter.includes(transformName(status))}} className="clickable" background={color.background} color={color.color}>
+                            <Tag key={status} onAction={() => {toggleStatus(status)}} attributes={{"data-active": statusFilter.includes(transformName(status))}} className="clickable" background={color.background} color={color.color}>
                                 <span>{status}</span>
                             </Tag>
                         );

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { KeyboardEventHandler, MouseEventHandler } from 'react';
 import styles from '@/styles/PageTitle.module.css'
 
 type Props = {
@@ -33,12 +33,22 @@ const PageButtons: React.FC<ButtonsProps> = ({children}) => {
 
 type ButtonProp = {
   disabled?: boolean,
+  onAction?: Function,
   onClick?: MouseEventHandler,
   children?: React.ReactNode
 }
 
-const PageButton: React.FC<ButtonProp> = ({children, onClick, disabled}) => {
-  return <div onClick={onClick} className={styles.button} data-disabled={!!disabled}>
+const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled}) => {
+
+  const onKeyDown:KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if(["enter", " "].includes(event.key.toLowerCase())) {
+        if(onAction) {
+            onAction();
+        }
+    }
+  };
+
+  return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick || onAction as MouseEventHandler} onKeyDown={onKeyDown} className={styles.button} data-disabled={!!disabled}>
     {children}
   </div>
 }
