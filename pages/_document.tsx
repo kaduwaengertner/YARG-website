@@ -15,6 +15,7 @@ export default function Document() {
 
         <meta name="theme-color" content="#080b13" />
         <meta name="description" content="Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar." />
+        <meta name="keywords" content="YARG, Yet Another Rhythm Game, Rock Band, Guitar Hero, Clone Hero" />
         <meta name="author" content="@EliteAsian123" />
 
         <meta name="og:locale" content="en-US"/>
