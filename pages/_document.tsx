@@ -50,6 +50,7 @@ export default function Document() {
               "playMode": ["SinglePlayer", "MultiPlayer"],
               "url": "https://yarg.in",
               "image": "https://yarg.in/Game_Cover_Art.png",
+              "logo": "https://yarg.in/Icon.png",
               "description": "Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar.",
               "author": {
                 "@type": "Person",
