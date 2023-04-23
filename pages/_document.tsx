@@ -45,7 +45,9 @@ export default function Document() {
             __html: JSON.stringify({
               
               "@context": "http://schema.org",
-              "@type": ["VideoGame", "GameApplication"],
+              "@type": ["VideoGame", "SoftwareApplication"],
+              "applicationCategory": "Game",
+              "operatingSystem": "Windows, Mac, Linux",
               "name": "YARG",
               "playMode": ["SinglePlayer", "MultiPlayer"],
               "url": "https://yarg.in",
