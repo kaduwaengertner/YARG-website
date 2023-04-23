@@ -46,7 +46,7 @@ export default function Document() {
               
               "@context": "http://schema.org",
               "@type": ["VideoGame", "SoftwareApplication"],
-              "applicationCategory": "Game",
+              "applicationCategory": "GameApplication",
               "operatingSystem": "Windows, Mac, Linux",
               "name": "YARG",
               "playMode": ["SinglePlayer", "MultiPlayer"],
@@ -54,6 +54,10 @@ export default function Document() {
               "image": "https://yarg.in/Game_Cover_Art.png",
               "logo": "https://yarg.in/Icon.png",
               "description": "Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar.",
+              "offers": {
+                "@type": "Offer",
+                "price": "0"
+              },
               "author": {
                 "@type": "Person",
                 "name": "EliteAsian123",
