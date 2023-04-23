@@ -12,4 +12,8 @@ function transformName(key: string) {
     return key.trim().toLowerCase()
 }
 
-export { toCamelCase, transformName }
+function stringToBoolean(string: string) {
+    return string.toLowerCase() === "true"
+}
+
+export { toCamelCase, transformName, stringToBoolean }

@@ -1,3 +1,4 @@
+import { getCSV } from '@/util/GoogleSheets';
 import { toCamelCase, transformName } from '@/util/StringUtils';
 import Papa, { ParseResult } from 'papaparse';
 
@@ -12,11 +13,14 @@ type Roadmap = {
 }
 
 async function getRoadmap():Promise<Roadmap[]> {
-    const raw = await fetch(`https://docs.google.com/spreadsheets/d/1XMSkLs-BX2Il0D41sgrrOOo1J9Lje_Anj-4XJt0AZOo/export?format=csv`).then(res => res.text());
+    const raw = await getCSV("1XMSkLs-BX2Il0D41sgrrOOo1J9Lje_Anj-4XJt0AZOo")
     
     const { data } = Papa.parse<Roadmap>(raw, {
         header: true,
-        transformHeader: header => toCamelCase(header)
+        transformHeader: header => toCamelCase(header),
+        transform: (value) => {
+            return value.trim();
+        },
     });
 
     const transformed = data.map(task => {
