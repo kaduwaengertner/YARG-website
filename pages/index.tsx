@@ -42,7 +42,7 @@ export default function Home({version}: InferGetStaticPropsType<typeof getStatic
           <video autoPlay muted loop playsInline poster={gameScreenshot.src}>
             <source src="/ingame-video.webm" type="video/webm" />
           </video>
-          <Image src={videoOverlay} alt="In-game Video" draggable={false} className={styles.overlay}/>
+          <Image src={videoOverlay} loading={"eager"} alt="In-game Video" draggable={false} className={styles.overlay}/>
         </div>
         <div className={styles.buttons}>
           <a href="https://github.com/EliteAsian123/YARG/releases/latest">
