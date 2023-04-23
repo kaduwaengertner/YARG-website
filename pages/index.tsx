@@ -32,6 +32,7 @@ export default function Home({version}: InferGetStaticPropsType<typeof getStatic
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://yarg.in"/>
         <title>YARG - Yet Another Rhythm Game</title>
       </Head>
 
