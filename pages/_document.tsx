@@ -37,6 +37,39 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+
+        <script 
+          type="application/ld+json"
+          key="game-jsonld"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              
+              "@context": "http://schema.org",
+              "@type": "VideoGame",
+              "name": "YARG",
+              "playMode": ["SinglePlayer", "MultiPlayer"],
+              "url": "https://yarg.in",
+              "image": "https://yarg.in/Game_Cover_Art.png",
+              "description": "Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar.",
+              "author": {
+                "@type": "Person",
+                "name": "EliteAsian123",
+                "url": "https://twitter.com/eliteasian123"
+              },
+              "publisher": "EliteAsian123",
+              "genre": ["Rhythm"],
+              "gamePlatform":["Windows", "Mac", "Linux"],
+              "video": {
+                "@type": "VideoObject",
+                "caption": "YARG v0.9 - Developer Update and Trailer",
+                "description": "It's still in its early stages, but progress is coming along nicely. Among the Clone Hero-styled games this is the only one with support for vocals, Pro Guitar and Keys. Bring your entire band and rock on! More features are coming each day! The project is entirely Open Source, so feel free to contribute! Subscribe for more news and updates.",
+                "url": "https://www.youtube.com/watch?v=DQPA3r00bZo"
+              }
+
+            })
+          }}
+        />
+
       </body>
     </Html>
   )
