@@ -59,17 +59,17 @@ export default function Document() {
               "publisher": "EliteAsian123",
               "genre": ["Rhythm"],
               "gamePlatform":["Windows", "Mac", "Linux"],
-              "video": {
-                "@type": "VideoObject",
-                "name": "YARG v0.9 - Developer Update and Trailer",
-                "caption": "YARG v0.9 - Developer Update and Trailer",
-                "description": "It's still in its early stages, but progress is coming along nicely. Among the Clone Hero-styled games this is the only one with support for vocals, Pro Guitar and Keys. Bring your entire band and rock on! More features are coming each day! The project is entirely Open Source, so feel free to contribute! Subscribe for more news and updates.",
-                "uploadDate": "2023-04-20T08:00:00+08:00",
-                "duration": "PT4M55S",
-                "thumbnailUrl": "https://i3.ytimg.com/vi/DQPA3r00bZo/maxresdefault.jpg",
-                "embedUrl": "https://www.youtube.com/embed/DQPA3r00bZo",
-                "url": "https://www.youtube.com/watch?v=DQPA3r00bZo"
-              }
+              // "video": {
+              //   "@type": "VideoObject",
+              //   "name": "YARG v0.9 - Developer Update and Trailer",
+              //   "caption": "YARG v0.9 - Developer Update and Trailer",
+              //   "description": "It's still in its early stages, but progress is coming along nicely. Among the Clone Hero-styled games this is the only one with support for vocals, Pro Guitar and Keys. Bring your entire band and rock on! More features are coming each day! The project is entirely Open Source, so feel free to contribute! Subscribe for more news and updates.",
+              //   "uploadDate": "2023-04-20T08:00:00+08:00",
+              //   "duration": "PT4M55S",
+              //   "thumbnailUrl": "https://i3.ytimg.com/vi/DQPA3r00bZo/maxresdefault.jpg",
+              //   "embedUrl": "https://www.youtube.com/embed/DQPA3r00bZo",
+              //   "url": "https://www.youtube.com/watch?v=DQPA3r00bZo"
+              // }
 
             })
           }}
