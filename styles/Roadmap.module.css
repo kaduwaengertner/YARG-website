@@ -46,6 +46,9 @@
     --borderRadius: 50px;
     background: var(--feature-background);
     color: rgb(var(--accent));
+    
+    position: sticky;
+    top: 120px;
 }
 
 .header th {

@@ -11,6 +11,15 @@
     flex-wrap: wrap;
 }
 
+.titleBox[data-sticky="true"] {
+    position: sticky;
+    top: 0px;
+    background: var(--background);
+
+    padding: 25px 0px;
+    margin: 25px auto;
+}
+
 .title {
     font-size: 3em;
     text-transform: uppercase;
