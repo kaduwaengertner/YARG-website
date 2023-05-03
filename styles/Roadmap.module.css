@@ -1,3 +1,12 @@
+.filterButton {
+    width: auto;
+    padding: 0px 20px;
+
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
 .filterGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -46,6 +55,9 @@
     --borderRadius: 50px;
     background: var(--feature-background);
     color: rgb(var(--accent));
+    
+    position: sticky;
+    top: 140px;
 }
 
 .header th {

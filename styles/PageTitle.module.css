@@ -11,6 +11,15 @@
     flex-wrap: wrap;
 }
 
+.titleBox[data-sticky="true"] {
+    position: sticky;
+    top: -30px;
+    background: var(--background);
+
+    padding: 55px 0px;
+    margin: 0px auto;
+}
+
 .title {
     font-size: 3em;
     text-transform: uppercase;
@@ -36,9 +45,10 @@
 .button {
     width: 45px;
     height: 45px;
-    border-radius: 100%;
+    border-radius: 45px;
     
     display: flex;
+    gap: 5px;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;

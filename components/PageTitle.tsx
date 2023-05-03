@@ -3,12 +3,13 @@ import styles from '@/styles/PageTitle.module.css'
 
 type Props = {
     title?: string,
-    description?: string
+    description?: string,
+    sticky?: boolean,
     children?: React.ReactNode
 }
 
-const PageTitle: React.FC<Props> = ({title, description, children}) => {
-  return <div className={styles.titleBox}>
+const PageTitle: React.FC<Props> = ({title, description, children, sticky = false}) => {
+  return <div data-sticky={sticky}  className={styles.titleBox}>
     <div className={styles.text}>
       <h1 className={styles.title}>{title}</h1>
       <span className={styles.description}>{description}</span>
@@ -36,9 +37,10 @@ type ButtonProp = {
   onAction?: Function,
   onClick?: MouseEventHandler,
   children?: React.ReactNode
+  className?: string,
 }
 
-const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled}) => {
+const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled, className = ""}) => {
 
   const onKeyDown:KeyboardEventHandler<HTMLDivElement> = (event) => {
     if(["enter", " "].includes(event.key.toLowerCase())) {
@@ -48,7 +50,7 @@ const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled
     }
   };
 
-  return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick || onAction as MouseEventHandler} onKeyDown={onKeyDown} className={styles.button} data-disabled={!!disabled}>
+  return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick || onAction as MouseEventHandler} onKeyDown={onKeyDown} className={`${styles.button} ${className}`} data-disabled={!!disabled}>
     {children}
   </div>
 }
