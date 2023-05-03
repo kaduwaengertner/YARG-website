@@ -98,7 +98,7 @@ export default function Roadmap({roadmap}: {roadmap: [Roadmap]}) {
             <PageTitle sticky title="Roadmap" description="Upcoming features and plans">
                 <PageButtons>
                     <SearchBar setter={setSearchFilter}/>
-                    <PageButton disabled={!filterView} onAction={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /></PageButton>
+                    <PageButton className={styles.filterButton} disabled={!filterView} onAction={() => {toggleFilterView()}}><FontAwesomeIcon icon={faFilter} /><span>Filters</span></PageButton>
                 </PageButtons>
             </PageTitle>
 

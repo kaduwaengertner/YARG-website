@@ -37,9 +37,10 @@ type ButtonProp = {
   onAction?: Function,
   onClick?: MouseEventHandler,
   children?: React.ReactNode
+  className?: string,
 }
 
-const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled}) => {
+const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled, className = ""}) => {
 
   const onKeyDown:KeyboardEventHandler<HTMLDivElement> = (event) => {
     if(["enter", " "].includes(event.key.toLowerCase())) {
@@ -49,7 +50,7 @@ const PageButton: React.FC<ButtonProp> = ({children, onClick, onAction, disabled
     }
   };
 
-  return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick || onAction as MouseEventHandler} onKeyDown={onKeyDown} className={styles.button} data-disabled={!!disabled}>
+  return <div role="button" tabIndex={0} aria-pressed="false" onClick={onClick || onAction as MouseEventHandler} onKeyDown={onKeyDown} className={`${styles.button} ${className}`} data-disabled={!!disabled}>
     {children}
   </div>
 }
