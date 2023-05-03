@@ -13,11 +13,11 @@
 
 .titleBox[data-sticky="true"] {
     position: sticky;
-    top: 0px;
+    top: -30px;
     background: var(--background);
 
-    padding: 25px 0px;
-    margin: 25px auto;
+    padding: 55px 0px;
+    margin: 0px auto;
 }
 
 .title {
