@@ -5,7 +5,7 @@ export default function DownloadPage() {
 export async function getServerSideProps() {
     return {
         redirect: {
-            destination: "https://github.com/EliteAsian123/YARG/releases/latest",
+            destination: "https://github.com/YARC-Official/YARG/releases/latest",
             permanent: true
         }
     }

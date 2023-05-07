@@ -6,7 +6,7 @@ const DownloadButton: React.FC = () => {
     const { data: version } = useSWR<Version>('api/version');
 
     return (
-    <a href="https://github.com/EliteAsian123/YARG/releases/latest">
+    <a href="https://yarg.in/download">
     <div className="download">
         DOWNLOAD {version && version.version}
         <style jsx>{`

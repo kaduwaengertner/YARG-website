@@ -15,7 +15,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next'
 export const getStaticProps: GetStaticProps = async () => {
 
   const latestVersion = await fetch(
-      "https://api.github.com/repos/EliteAsian123/YARG/releases/latest", {
+      "https://api.github.com/repos/YARC-Official/YARG/releases/latest", {
       headers: { "User-Agent": "YARG" }
   }).then(res => res.json());
 
