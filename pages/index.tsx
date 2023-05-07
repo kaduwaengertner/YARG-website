@@ -45,7 +45,7 @@ export default function Home({version}: InferGetStaticPropsType<typeof getStatic
           <Image src={videoOverlay} loading={"eager"} alt="In-game Video" draggable={false} className={styles.overlay}/>
         </div>
         <div className={styles.buttons}>
-          <a href="https://github.com/EliteAsian123/YARG/releases/latest">
+          <a href="https://github.com/YARC-Official/YARG/releases/latest">
             <HeaderButton background="rgb(var(--accent))" style={{textTransform: "none"}}>DOWNLOAD {version}</HeaderButton>
           </a>
           <a href="https://discord.gg/sqpu4R552r" target='_blank'>
