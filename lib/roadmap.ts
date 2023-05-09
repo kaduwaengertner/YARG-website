@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { getCSV } from '@/util/GoogleSheets';
 import { toCamelCase, transformName } from '@/util/StringUtils';
 import Papa, { ParseResult } from 'papaparse';

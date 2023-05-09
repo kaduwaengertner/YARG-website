@@ -1,5 +1,6 @@
+import 'server-only';
+
 import { BooleanCell, getCSV } from '@/util/GoogleSheets';
-import { stringToBoolean } from '@/util/StringUtils';
 import Papa from 'papaparse';
 
 type Contributors = {

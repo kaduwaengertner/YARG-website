@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { stringToBoolean } from "./StringUtils";
 
 type Options = {
