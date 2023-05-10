@@ -11,6 +11,10 @@ import FiltersProvider from './filters/provider';
 import { Roadmap, getRoadmap } from '@/lib/roadmap';
 import FilteredTable from "./table/FilteredTable";
 
+export const metadata = {
+    title: "Roadmap"
+};
+
 export default async function Roadmap() {
 
     const roadmap = await getRoadmap();
