@@ -19,3 +19,8 @@
     gap: 5px;
     margin: 10px 0px;
 }
+
+.titleButtons {
+    display: flex;
+    gap: 5px;
+}

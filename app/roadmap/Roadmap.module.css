@@ -7,11 +7,6 @@
     font-size: 0.9em;
 }
 
-.titleButtons {
-    display: flex;
-    gap: 5px;
-}
-
 .table {
     width: 100%;
     max-width: var(--max-width);

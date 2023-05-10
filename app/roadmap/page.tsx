@@ -36,7 +36,9 @@ export default async function Roadmap() {
             </PageButtons>
         </PageTitle>
 
-        <FilterGrid categoryList={categoryList} priorityList={priorityList} statusList={statusList} />
+        <main>
+            <FilterGrid categoryList={categoryList} priorityList={priorityList} statusList={statusList} />
+        </main>
 
     </FiltersProvider>
 
