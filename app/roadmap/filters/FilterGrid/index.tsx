@@ -14,19 +14,11 @@ type Props = {
 
 const FilterGrid: React.FC<Props> = ({categoryList, priorityList, statusList}) => {
 
-    const { 
-        filterView, 
-        categoryFilter,
-        priorityFilter,
-        statusFilter
-    } = useContext(FiltersContext);
+    const { filterView } = useContext(FiltersContext);
 
     const { 
-        toggleCategory, 
         setCategoryFilter, 
-        togglePriority, 
         setPriorityFilter, 
-        toggleStatus,
         setStatusFilter, 
     } = useContext(FilterDispatchContext);
 
@@ -44,7 +36,7 @@ const FilterGrid: React.FC<Props> = ({categoryList, priorityList, statusList}) =
                         </div>
                     </div>
 
-                    {categoryList.map(category => <TagButton key={category}  name={category} type="category" />)}
+                    { categoryList.map(category => <TagButton key={category}  name={category} type="category" />) }
                     
                 </div>
 
@@ -57,7 +49,7 @@ const FilterGrid: React.FC<Props> = ({categoryList, priorityList, statusList}) =
                         </div>
                     </div>
 
-                    {priorityList.map(priority => <TagButton key={priority}  name={priority} type="priority" />)}
+                    { priorityList.map(priority => <TagButton key={priority}  name={priority} type="priority" />) }
 
                 </div>
 
@@ -70,7 +62,7 @@ const FilterGrid: React.FC<Props> = ({categoryList, priorityList, statusList}) =
                         </div>
                     </div>
 
-                    {statusList.map(status => <TagButton key={status}  name={status} type="status" />)}
+                    { statusList.map(status => <TagButton key={status}  name={status} type="status" />) }
 
                 </div>
             </div>
