@@ -29,31 +29,31 @@ export default async function Roadmap() {
     
     <MenuHeader />
     
-    <FiltersProvider>
-        <PageTitle sticky title="Roadmap" description="Upcoming features and plans">
-            <PageButtons>
-                <Search />
-                <ViewFilterButton />
-            </PageButtons>
-        </PageTitle>
-
         <main>
-            <FilterGrid categoryList={categoryList} priorityList={priorityList} statusList={statusList} />
+            <FiltersProvider>
+                <PageTitle sticky title="Roadmap" description="Upcoming features and plans">
+                    <PageButtons>
+                        <Search />
+                        <ViewFilterButton />
+                    </PageButtons>
+                </PageTitle>
 
-            <table className={styles.table}>
-                <tbody>
-                    <tr className={styles.header}>
-                        <th>Task</th>
-                        <th>Category</th>
-                        <th>Priority</th>
-                        <th>Status</th>
-                    </tr>
-                    <FilteredTable list={roadmap} />
-                </tbody>
-            </table>
+                <FilterGrid categoryList={categoryList} priorityList={priorityList} statusList={statusList} />
+
+                <table className={styles.table}>
+                    <tbody>
+                        <tr className={styles.header}>
+                            <th>Task</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                        <FilteredTable list={roadmap} />
+                    </tbody>
+                </table>
+
+            </FiltersProvider>
         </main>
-
-    </FiltersProvider>
 
     {/* @ts-expect-error Server Component */}
     <Footer />

@@ -24,3 +24,20 @@
     display: flex;
     gap: 5px;
 }
+
+@media (max-width: 900px) {
+
+    .filterGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .filterGrid .title {
+        justify-content: space-between;
+    }
+
+    .filterGrid > div > div {
+        font-size: 1em;
+        padding: 15px 25px;
+    }
+
+}

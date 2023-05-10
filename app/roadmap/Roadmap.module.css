@@ -77,19 +77,6 @@ td > span.description {
 
 @media (max-width: 900px) {
 
-    .filterGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .filterGrid .title {
-        justify-content: space-between;
-    }
-
-    .filterGrid > div > div {
-        font-size: 1em;
-        padding: 15px 25px;
-    }
-
     .header th {
         position: absolute;
         width: 1px !important;
