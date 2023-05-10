@@ -50,9 +50,9 @@ const FiltersProvider: React.FC<ProviderProps> = ({children}) => {
 
     const filterCheck = (task: Roadmap) => {
         return searchCheck(task.task, searchFilter) &&
-        statusFilter.includes(transformName(task.status)) &&
-        categoryFilter.includes(transformName(task.type)) &&
-        priorityFilter.includes(transformName(task.taskSize))
+        !statusFilter.includes(transformName(task.status)) &&
+        !categoryFilter.includes(transformName(task.type)) &&
+        !priorityFilter.includes(transformName(task.taskSize))
     }
 
     return (

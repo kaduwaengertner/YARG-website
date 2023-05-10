@@ -9,6 +9,7 @@ import Search from "./filters/SearchFilter";
 import ViewFilterButton from "./filters/ViewFilterButton";
 import FiltersProvider from './filters/provider';
 import { Roadmap, getRoadmap } from '@/lib/roadmap';
+import FilteredTable from "./table/FilteredTable";
 
 export default async function Roadmap() {
 
@@ -38,6 +39,18 @@ export default async function Roadmap() {
 
         <main>
             <FilterGrid categoryList={categoryList} priorityList={priorityList} statusList={statusList} />
+
+            <table className={styles.table}>
+                <tbody>
+                    <tr className={styles.header}>
+                        <th>Task</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                    </tr>
+                    <FilteredTable list={roadmap} />
+                </tbody>
+            </table>
         </main>
 
     </FiltersProvider>
