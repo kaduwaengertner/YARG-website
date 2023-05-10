@@ -15,3 +15,5 @@ export async function GET() {
     return NextResponse.json({ version: data["tag_name"], link: data["html_url"] });
 
 }
+
+export const revalidate = 1800;

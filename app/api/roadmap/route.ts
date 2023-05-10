@@ -7,3 +7,5 @@ export async function GET() {
 
     return NextResponse.json(roadmap);
 }
+
+export const revalidate = 1800;
