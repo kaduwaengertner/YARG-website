@@ -4,6 +4,7 @@ import { PageButton } from '@/app/components/PageTitle/buttons';
 import React, { useContext } from 'react';
 import styles from '../Roadmap.module.css';
 import { FilterDispatchContext, FiltersContext } from './provider';
+import { ListFilter } from 'lucide-react';
 
 const ViewFilterButton: React.FC = () => {
 
@@ -15,7 +16,7 @@ const ViewFilterButton: React.FC = () => {
             disabled={!filterView} 
             onAction={() => {toggleFilterView()}}
         >
-            {/* <FontAwesomeIcon icon={faFilter} /> */}
+            <ListFilter />
             <span>Filters</span>
         </PageButton>
     );

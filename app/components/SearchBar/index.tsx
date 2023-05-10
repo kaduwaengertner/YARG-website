@@ -3,6 +3,7 @@
 import React, { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import styles from './SearchBar.module.css';
 import { transformName } from '@/util/StringUtils';
+import { Search } from 'lucide-react';
 
 type Props = {
     setter: Dispatch<SetStateAction<string>>,
@@ -22,7 +23,7 @@ const SearchBar: React.FC<Props> = ({setter}) => {
 
     return (
         <label className={styles.search} data-active={text.length > 0}>
-                {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
+                <Search size={20} />
                 <input 
                     type="text" 
                     onChange={onChange}
