@@ -15,22 +15,16 @@ const TagButton: React.FC<Props> = ({name, type}) => {
     const filters = useContext(FiltersContext);
     const dispatch = useContext(FilterDispatchContext);
 
-    const filtersByType: {[key in typeof type]: string[]} = {
+    const filtersByType: {[key in filterTypes]: string[]} = {
         'category': filters.categoryFilter,
         'priority': filters.priorityFilter,
         'status': filters.statusFilter,
     }
 
-    const togglerByType: {[key in typeof type]: Function} = {
+    const togglerByType: {[key in filterTypes]: Function} = {
         'category': dispatch.toggleCategory,
         'priority': dispatch.togglePriority,
         'status': dispatch.toggleStatus,
-    }
-
-    const colorsByType: {[key in typeof type]: Function} = {
-        'category': getDefaultColor,
-        'priority': getDefaultColor,
-        'status': getStatusColor,
     }
 
     return (
@@ -61,6 +55,12 @@ function getDefaultColor(): TagColor {
         background: "var(--tag-background)",
         color: "rgb(var(--accent))"
     }}
+
+export const colorsByType: {[key in filterTypes]: Function} = {
+    'category': getDefaultColor,
+    'priority': getDefaultColor,
+    'status': getStatusColor,
+}
 
 function getStatusColor(status: string): TagColor {
 
