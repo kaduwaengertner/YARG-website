@@ -1,7 +1,7 @@
 "use client";
 
 import type { Roadmap } from '@/lib/roadmap';
-import Row from './row';
+import Row from './Row';
 import { useContext } from 'react';
 import { FiltersContext } from '../filters/provider';
 
