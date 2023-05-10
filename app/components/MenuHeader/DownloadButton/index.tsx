@@ -1,10 +1,9 @@
+import { getVersion } from '@/lib/github';
 import styles from './DownloadButton.module.css';
 
 const DownloadButton = async () => {
 
-    const { "tag_name": version } = await fetch("https://api.github.com/repos/YARC-Official/YARG/releases/latest", {
-        headers: { "User-Agent": "YARG" }
-      }).then(res => res.json());
+    const version = await getVersion();
 
     return (
         <a href="https://yarg.in/download">

@@ -1,3 +1,4 @@
+import { getVersion } from '@/lib/github';
 import { NextResponse } from 'next/server';
 
 type Version = {
@@ -7,12 +8,9 @@ type Version = {
 
 export async function GET() {
 
-    const data = await fetch(
-        "https://api.github.com/repos/YARC-Official/YARG/releases/latest", {
-        headers: { "User-Agent": "YARG" }
-    }).then(res => res.json());
+    const version = await getVersion();
 
-    return NextResponse.json({ version: data["tag_name"], link: data["html_url"] });
+    return NextResponse.json({ version });
 
 }
 

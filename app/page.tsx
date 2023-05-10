@@ -4,6 +4,7 @@ import { FullLogo } from './components/Logo'
 import gameScreenshot from '@/public/game-screenshot.png';
 import { HeaderButton } from './components/HomeHeader';
 import { Footer } from './components/Footer';
+import { getVersion } from '@/lib/github';
 
 export const metadata = {
   title: "YARG | Yet Another Rhythm Game"
@@ -11,9 +12,7 @@ export const metadata = {
 
 export default async function Home() {
 
-  const { "tag_name": version } = await fetch("https://api.github.com/repos/YARC-Official/YARG/releases/latest", {
-    headers: { "User-Agent": "YARG" }
-  }).then(res => res.json());
+  const version = await getVersion();
 
   return (<>
 
@@ -30,7 +29,7 @@ export default async function Home() {
 
         <a href="https://github.com/YARC-Official/YARG/releases/latest">
           <HeaderButton background="rgb(var(--accent))" style={{ textTransform: "none" }}>
-            DOWNLOAD {version}
+            DOWNLOAD { version }
           </HeaderButton>
         </a>
 

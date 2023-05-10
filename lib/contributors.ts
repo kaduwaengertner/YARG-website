@@ -14,7 +14,7 @@ type Contributors = {
 }
 
 async function getContributors():Promise<Contributors[]> {
-    const raw = await getCSV("1R1iXgoAeXhv6TLay-tnQew9Vu7ySIBUyhAE1lVImwDI");
+    const raw = await getCSV("1R1iXgoAeXhv6TLay-tnQew9Vu7ySIBUyhAE1lVImwDI", { tag: 'contributors' });
     
     const { data } = Papa.parse<Contributors>(raw, {
         header: true,
