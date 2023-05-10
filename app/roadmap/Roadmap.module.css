@@ -7,28 +7,6 @@
     font-size: 0.9em;
 }
 
-.filterGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin: 40px 0px;
-}
-
-.filterGrid > div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.filterGrid .title {
-    text-transform: uppercase;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin: 10px 0px;
-}
-
 .titleButtons {
     display: flex;
     gap: 5px;
