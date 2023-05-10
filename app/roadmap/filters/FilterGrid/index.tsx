@@ -31,8 +31,8 @@ const FilterGrid: React.FC<Props> = ({categoryList, priorityList, statusList}) =
                     <div className={styles.title}>
                         Category List
                         <div className={styles.titleButtons}>
-                            <Tag className="clickable" onAction={() => { setCategoryFilter(categoryList) }}>All</Tag>
-                            <Tag className="clickable" onAction={() => { setCategoryFilter([]) }}>None</Tag>
+                            <Tag className="clickable" onAction={() => { setCategoryFilter([]) }}>All</Tag>
+                            <Tag className="clickable" onAction={() => { setCategoryFilter(categoryList) }}>None</Tag>
                         </div>
                     </div>
 
@@ -44,8 +44,8 @@ const FilterGrid: React.FC<Props> = ({categoryList, priorityList, statusList}) =
                     <div className={styles.title}>
                         Priority List
                         <div className={styles.titleButtons}>
-                            <Tag className="clickable" onAction={() => { setPriorityFilter(priorityList) }}>All</Tag>
-                            <Tag className="clickable" onAction={() => { setPriorityFilter([]) }}>None</Tag>
+                            <Tag className="clickable" onAction={() => { setPriorityFilter([]) }}>All</Tag>
+                            <Tag className="clickable" onAction={() => { setPriorityFilter(priorityList) }}>None</Tag>
                         </div>
                     </div>
 
@@ -57,8 +57,8 @@ const FilterGrid: React.FC<Props> = ({categoryList, priorityList, statusList}) =
                     <div className={styles.title}>
                         Status List
                         <div className={styles.titleButtons}>
-                            <Tag className="clickable" onAction={() => { setStatusFilter(statusList) }}>All</Tag>
-                            <Tag className="clickable" onAction={() => { setStatusFilter([]) }}>None</Tag>
+                            <Tag className="clickable" onAction={() => { setStatusFilter([]) }}>All</Tag>
+                            <Tag className="clickable" onAction={() => { setStatusFilter(statusList) }}>None</Tag>
                         </div>
                     </div>
 
