@@ -1,0 +1,43 @@
+.filterGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 40px 0px;
+}
+
+.filterGrid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filterGrid .title {
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0px;
+}
+
+.titleButtons {
+    display: flex;
+    gap: 5px;
+}
+
+@media (max-width: 900px) {
+
+    .filterGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .filterGrid .title {
+        justify-content: space-between;
+    }
+
+    .filterGrid > div > div {
+        font-size: 1em;
+        padding: 15px 25px;
+    }
+
+}

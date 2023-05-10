@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { getCSV } from '@/util/GoogleSheets';
 import { toCamelCase, transformName } from '@/util/StringUtils';
 import Papa, { ParseResult } from 'papaparse';
@@ -13,7 +15,7 @@ type Roadmap = {
 }
 
 async function getRoadmap():Promise<Roadmap[]> {
-    const raw = await getCSV("1XMSkLs-BX2Il0D41sgrrOOo1J9Lje_Anj-4XJt0AZOo")
+    const raw = await getCSV("1XMSkLs-BX2Il0D41sgrrOOo1J9Lje_Anj-4XJt0AZOo", { tag: 'roadmap' })
     
     const { data } = Papa.parse<Roadmap>(raw, {
         header: true,

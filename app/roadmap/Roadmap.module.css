@@ -1,0 +1,117 @@
+.filterButton {
+    width: auto !important;
+    padding: 0px 20px;
+
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.table {
+    width: 100%;
+    max-width: var(--max-width);
+    border-collapse:separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.table th {
+    padding: 10px 25px;
+}
+
+.table td {
+    padding: 25px;
+    border-bottom: solid 1px var(--tag-background);
+}
+
+.header {
+    --borderRadius: 50px;
+    background: var(--feature-background);
+    color: rgb(var(--accent));
+    
+    position: sticky;
+    top: 140px;
+}
+
+.header th {
+    border: 2px solid var(--feature-border);
+    border-style: solid none;
+    text-transform: uppercase;
+}
+
+.header th:first-child {
+    text-align: left;
+    border-left-style: solid;
+    border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+}
+
+.header th:last-child {
+    border-right-style: solid;
+    border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+}
+
+.header th:nth-child(2),
+.header th:nth-child(3) {
+    width: 180px;
+}
+
+.header th:nth-child(4) {
+    width: 150px;
+}
+
+.table td > span {
+    margin: 5px 0px;
+}
+
+td > span.title {
+    font-size: 1.3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+}
+
+td > span.description {
+    color: var(--foreground-35);
+    word-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+
+    .header th {
+        position: absolute;
+        width: 1px !important;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(0);
+        border: transparent 0px;
+        padding: 0;
+    }
+
+    .table td {
+        display: block;
+    }
+    
+    .table td:not(:last-child) {
+        --margin: 25px;
+        padding: var(--margin) 0px;
+        margin: 0px var(--margin);
+    }
+
+    .table td::before {
+        content: attr(data-cell);
+        text-transform: uppercase;
+        color: rgb(var(--accent));
+        font-weight: 700;
+    }
+
+    .table td:first-child {
+        padding-top: 50px;
+    }
+
+    .table td:not(:first-child) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

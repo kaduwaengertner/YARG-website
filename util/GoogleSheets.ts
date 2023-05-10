@@ -1,11 +1,21 @@
+import 'server-only';
+
 import { stringToBoolean } from "./StringUtils";
 
 type Options = {
     gid?: string | number,
+    tag?: string,
 }
 
 async function getCSV(id: string, options?: Options) {
-    const raw = await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=csv&gid=${options?.gid || 0}`).then(res => res.text());
+    const raw = await fetch(
+        `https://docs.google.com/spreadsheets/d/${id}/export?format=csv&gid=${options?.gid || 0}`,
+        {
+            next: {
+                revalidate: 1800,
+                tags: options?.tag ? ['sheet', options.tag] : ['sheet']
+            }
+        }).then(res => res.text());
 
     return raw;
 };
