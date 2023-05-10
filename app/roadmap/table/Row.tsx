@@ -9,13 +9,13 @@ const Row: React.FC<{task: Roadmap}> = ({task}) => {
         <span className={styles.description}>{task.description}</span>
     </td>
     <td data-cell="category">
-        <Tag className="clickable">{task.type}</Tag>
+        <Tag>{task.type}</Tag>
     </td>
     <td data-cell="priority">
-        <Tag className="clickable">{task.taskSize}</Tag>
+        <Tag>{task.taskSize}</Tag>
     </td>
     <td data-cell="status">
-        <Tag className="clickable">{task.status}</Tag>
+        <Tag>{task.status}</Tag>
     </td>
   </tr>);
 }
