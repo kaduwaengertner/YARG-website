@@ -1,8 +1,6 @@
 import { transformName } from "@/util/StringUtils";
-import { Footer } from "@/app/components/Footer";
-import { MenuHeader } from "@/app/components/MenuHeader";
 import PageTitle from "@/app/components/PageTitle";
-import { PageButton, PageButtons } from "@/app/components/PageTitle/buttons";
+import { PageButtons } from "@/app/components/PageTitle/buttons";
 import styles from './Roadmap.module.css';
 import FilterGrid from "./filters/FilterGrid";
 import Search from "./filters/SearchFilter";
@@ -30,10 +28,7 @@ export default async function Roadmap() {
     const statusList = getList('status');
     
     return (<>
-    
-    <MenuHeader />
-    
-        <main>
+      
             <FiltersProvider>
                 <PageTitle sticky title="Roadmap" description="Upcoming features and plans">
                     <PageButtons>
@@ -57,10 +52,6 @@ export default async function Roadmap() {
                 </table>
 
             </FiltersProvider>
-        </main>
-
-    {/* @ts-expect-error Server Component */}
-    <Footer />
     
     </>);
 
