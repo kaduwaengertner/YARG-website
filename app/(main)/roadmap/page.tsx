@@ -26,33 +26,33 @@ export default async function Roadmap() {
     const categoryList = getList('type');
     const priorityList = getList('taskSize');
     const statusList = getList('status');
-    
+
     return (<>
-      
-            <FiltersProvider>
-                <PageTitle sticky title="Roadmap" description="Upcoming features and plans">
-                    <PageButtons>
-                        <Search />
-                        <ViewFilterButton />
-                    </PageButtons>
-                </PageTitle>
 
-                <FilterGrid categoryList={categoryList} priorityList={priorityList} statusList={statusList} />
+        <FiltersProvider>
+            <PageTitle sticky title="Roadmap" description="Upcoming features and plans">
+                <PageButtons>
+                    <Search />
+                    <ViewFilterButton />
+                </PageButtons>
+            </PageTitle>
 
-                <table className={styles.table}>
-                    <tbody>
-                        <tr className={styles.header}>
-                            <th>Task</th>
-                            <th>Category</th>
-                            <th>Priority</th>
-                            <th>Status</th>
-                        </tr>
-                        <FilteredTable list={roadmap} />
-                    </tbody>
-                </table>
+            <FilterGrid categoryList={categoryList} priorityList={priorityList} statusList={statusList} />
 
-            </FiltersProvider>
-    
+            <table className={styles.table}>
+                <tbody>
+                    <tr className={styles.header}>
+                        <th>Task</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                    </tr>
+                    <FilteredTable list={roadmap} />
+                </tbody>
+            </table>
+
+        </FiltersProvider>
+
     </>);
 
 }
