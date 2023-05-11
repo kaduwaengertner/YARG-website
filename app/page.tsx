@@ -5,6 +5,10 @@ import gameScreenshot from '@/public/game-screenshot.png';
 import { HeaderButton } from './components/HomeHeader';
 import { Footer } from './components/Footer';
 import { getVersion } from '@/lib/github';
+import { getStreams } from '@/lib/twitch';
+import HomeComponent from './components/HomeComponent';
+import Tag from './components/Tags';
+import { Live } from './components/Live';
 
 export const metadata = {
   title: "YARG | Yet Another Rhythm Game"
@@ -13,6 +17,7 @@ export const metadata = {
 export default async function Home() {
 
   const version = await getVersion();
+  const streams = await getStreams();
 
   return (<>
 
@@ -43,6 +48,23 @@ export default async function Home() {
     </header>
 
     <main>
+
+      {
+        streams.length > 0 ? (<>
+
+          <HomeComponent title="Live">
+            <a href="https://www.twitch.tv/directory/game/YARG" target="_blank">
+              <Tag background="rgb(var(--accent))" color="var(--background)" style={{ fontSize: "1em" }}>Browse on Twitch</Tag>
+            </a>
+          </HomeComponent>
+          <div className={styles.lives}>
+            {
+              streams.slice(0, 3).map(stream => <Live key={stream.id} stream={stream} />)
+            }
+          </div>
+          
+        </>) : <></>
+      }
 
     </main>
     

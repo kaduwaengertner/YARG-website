@@ -84,6 +84,12 @@
     box-shadow: 0px 0px 50px rgb(var(--accent), .5);
 }
 
+.lives {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .header {
         animation: header_background_opening 2s;

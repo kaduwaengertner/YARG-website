@@ -1,5 +1,5 @@
 .titleBox {
-    margin: 70px auto;
+    margin: 70px auto 10px;
     width: 100%;
     max-width: var(--max-width);
     display: flex;

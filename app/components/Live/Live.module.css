@@ -1,0 +1,12 @@
+a.stream {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: calc(100% / 3);
+}
+
+.live {
+    background-size: cover;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
