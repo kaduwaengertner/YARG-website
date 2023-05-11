@@ -1,8 +1,8 @@
 import { transformName } from "@/util/StringUtils";
-import { Footer } from "../components/Footer";
-import { MenuHeader } from "../components/MenuHeader";
-import PageTitle from "../components/PageTitle";
-import { PageButton, PageButtons } from "../components/PageTitle/buttons";
+import { Footer } from "@/app/components/Footer";
+import { MenuHeader } from "@/app/components/MenuHeader";
+import PageTitle from "@/app/components/PageTitle";
+import { PageButton, PageButtons } from "@/app/components/PageTitle/buttons";
 import styles from './Roadmap.module.css';
 import FilterGrid from "./filters/FilterGrid";
 import Search from "./filters/SearchFilter";
