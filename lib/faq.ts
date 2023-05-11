@@ -92,4 +92,4 @@ function getSlugByPath(path: string) {
 };
 
 export { allPosts, allCategories, getPost, postsByCategory };
-
+export type { FAQCategory, FAQPost, FAQData };

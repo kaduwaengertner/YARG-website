@@ -1,23 +1,28 @@
+import { FAQCategory, FAQData } from '@/lib/faq';
 import style from './FAQ.module.css';
 import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 type Props = {
-    title?: string,
-    description?: string,
+    category: FAQCategory,
+    data: FAQData,
 }
 
-const FAQItem: React.FC<Props> = ({title, description}) => {
-  return (<div className={style.item}>
+const FAQItem: React.FC<Props> = ({ category, data }) => {
+  return (<Link href={`faq/${category.id}/${data.slug}`}>
+    <div className={style.item}>
 
-    <div className={style.info}>
-        <div className={style.title}>{ title }</div>
-        <div className={style.description}>{ description }</div>
-    </div>
+      <div className={style.info}>
+        <div className={style.title}>{data.title}</div>
+        <div className={style.description}>{data.description}</div>
+      </div>
 
-    <div className={style.button}>
+      <div className={style.button}>
         <ChevronRight />
+      </div>
     </div>
-  </div>);
+  </Link>
+  );
 }
 
 export default FAQItem;

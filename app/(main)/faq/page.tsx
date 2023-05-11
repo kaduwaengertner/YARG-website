@@ -27,7 +27,7 @@ export default async function FAQ() {
 
                         <div className={style.items}>
                             {
-                                categoryPosts.map(post => <FAQItem key={post.data.title} {...post.data} />)
+                                categoryPosts.map(post => <FAQItem key={post.data.title} category={category} data={post.data} />)
                             }
                         </div>
                     </div>
