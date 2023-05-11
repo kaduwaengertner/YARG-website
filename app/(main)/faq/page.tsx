@@ -2,6 +2,7 @@
 import PageTitle from "@/app/components/PageTitle";
 import style from './FAQ.module.css';
 import FAQItem from "./Item";
+import { allCategories, allPosts, postsByCategory } from "@/lib/faq";
 
 export const metadata = {
     title: "FAQ"
@@ -9,33 +10,30 @@ export const metadata = {
 
 export default async function FAQ() {
 
+    const posts = await allPosts();
+    const categories = await allCategories();
+
     return (<>
         <PageTitle sticky title="F.A.Q." description="Frequently Asked Questions" />
 
+        {
+            categories.map(async category => {
+                const categoryPosts = await postsByCategory(category.id, posts);
+                if (categoryPosts.length < 1) return;
 
-        <div className={style.category}>
-            <div className={style.title}>Category name</div>
+                return (<>
+                    <div className={style.category}>
+                        <div className={style.title}>{category.title}</div>
 
-            <div className={style.items}>
-
-                <FAQItem 
-                    title="How to make a great title" 
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." 
-                />
-
-                <FAQItem 
-                    title="How to make a great title" 
-                />
-
-                <FAQItem 
-                    title="How to make a great title" 
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." 
-                />
-
-
-            </div>
-
-        </div>
+                        <div className={style.items}>
+                            {
+                                categoryPosts.map(post => <FAQItem key={post.data.title} {...post.data} />)
+                            }
+                        </div>
+                    </div>
+                </>);
+            })
+        }
 
     </>);
 
