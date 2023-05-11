@@ -5,6 +5,11 @@ import matter from 'gray-matter';
 
 const Path = path.join(process.cwd(), 'faq');
 
+const defaultCategory: FAQCategory = {
+    id: "default",
+    title: "Other questions"
+};
+
 type FAQData = {
     slug: string,
     title: string,
@@ -36,7 +41,9 @@ async function allPosts() {
 
 async function allCategories(): Promise<FAQCategory[]> {
     const file = await fs.readFile(`${Path}/categories.json`, { encoding: 'utf-8' });
-    return JSON.parse(file);
+    const categories: FAQCategory[] = JSON.parse(file);
+
+    return [...categories, defaultCategory];
 }
 
 type getPostOptions = {
@@ -64,7 +71,7 @@ async function postsByCategory(categoryId: string, posts: FAQPost[]) {
     const categories = (await allCategories()).map(category => category.id);
     
     return posts.filter(post =>
-        (categoryId === "default") ?
+        (categoryId === defaultCategory.id) ?
             !categories.includes(post.data.category)
             : post.data.category === categoryId
     );
