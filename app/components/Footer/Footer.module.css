@@ -33,7 +33,3 @@
     color: var(--foreground);
     text-transform: uppercase;
 }
-
-.text svg {
-    margin: 0px 3px;
-}

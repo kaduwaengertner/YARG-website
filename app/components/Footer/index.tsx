@@ -1,5 +1,5 @@
 import { getContributors } from '@/lib/contributors';
-import { Twitter, Github } from 'lucide-react';
+import { Twitter, Github, Heart } from 'lucide-react';
 import { Discord } from '../ExtraIcons/index';
 import styles from './Footer.module.css';
 
@@ -14,7 +14,7 @@ const Footer = async () => {
             <a className={styles.github} href="https://github.com/YARC-Official/YARG" aria-label="YARG Github Repository"><Github fill="currentColor" /></a>
         </div>
         <div className={styles.text}>
-            Made with a lot of by <span className={styles.contributorsCount}>{contributors?.length || ""}</span> amazing people
+            Made with a lot of <Heart size="1.2em" fill="var(--red)" stroke="none" vertical-align="bottom" /> by <span className={styles.contributorsCount}>{contributors?.length || ""}</span> amazing people
         </div>
         <div className={styles.text}>
             Website by <a href="https://twitter.com/pantotone">@Pantotone</a> and <a href="https://twitter.com/kaduwaengertner" target='_blank'>@KaduWaengertner</a>
