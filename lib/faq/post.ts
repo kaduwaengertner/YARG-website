@@ -12,18 +12,13 @@ async function fetchPosts(categoryId: string) {
         const fileName = path.substring(root.length + 1);
         const [ postId ] = fileName.split('.md');
 
-        return fetchPost({ postId, categoryId });
+        return fetchPost(categoryId, postId);
     });
     
     return Promise.all(posts);
 };
 
-type FetchOptions = {
-    categoryId: string,
-    postId: string,
-};
-
-async function fetchPost({categoryId, postId}: FetchOptions): Promise<FAQPost> {
+async function fetchPost(categoryId: string, postId: string): Promise<FAQPost> {
     const path = `${PostsPath}/${categoryId}/${postId}.md`;
 
     const raw = await fs.readFile(path, { encoding: 'utf-8' });

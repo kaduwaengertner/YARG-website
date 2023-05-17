@@ -1,5 +1,5 @@
 import PageTitle from "@/app/components/PageTitle";
-import { getPostByCategory } from "@/lib/faq";
+import { fetchPost } from "@/lib/faq/post";
 import { marked } from "marked";
 
 type Props = {
@@ -12,8 +12,9 @@ type Props = {
 export default async function FAQPage({params}: Props) {
 
     const { category, slug } = params;
-    const post = await getPostByCategory(category, decodeURI(slug));
-    const body = marked.parse(post?.content || "");
+
+    const post = await fetchPost(category, slug);
+    const body = marked.parse(post.content);
 
     return (<>
         <PageTitle title={post?.data.title} description={post?.data.description} />
