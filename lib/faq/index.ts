@@ -22,17 +22,5 @@ type FAQCategory = {
     description?: string
 };
 
-type FetchOptions = {
-    id?: string,
-    path?: string,
-};
-
-function getIdByPath(path: string, offset: number = -1) {
-    const fileName = path.split('/').at(offset) as string;
-    const [ id ] = fileName.split('.');
-
-    return id;
-};
-
-export { RootPath, PostsPath, getIdByPath };
-export type { FAQData, FAQCategory, FAQPost, FetchOptions };
+export { RootPath, PostsPath };
+export type { FAQData, FAQCategory, FAQPost };

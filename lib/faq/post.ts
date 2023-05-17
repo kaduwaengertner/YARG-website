@@ -1,26 +1,36 @@
 import { glob } from "glob";
-import { FAQData, FAQPost, FetchOptions, PostsPath, getIdByPath } from "./index";
+import { FAQData, FAQPost, PostsPath } from "./index";
 import fs from 'fs/promises';
 import matter from "gray-matter";
+import path from "path";
 
 async function fetchPosts(categoryId: string) {
-    const paths = await glob(`${PostsPath}/${categoryId}/*.md`);
-    const posts = paths.map(path => fetchPost({ path }));
+    const root = path.join(PostsPath, categoryId);
+    const paths = await glob(`${root}/*.md`);
+
+    const posts = paths.map(path => {
+        const fileName = path.substring(root.length + 1);
+        const [ postId ] = fileName.split('.md');
+
+        return fetchPost({ postId, categoryId });
+    });
     
     return Promise.all(posts);
 };
 
-async function fetchPost(options: FetchOptions): Promise<FAQPost> {
-    if (!options.id && !options.path) throw new Error('Missing id/path');
+type FetchOptions = {
+    categoryId: string,
+    postId: string,
+};
 
-    const id = options.id || getIdByPath(options.path as string);
-    const path = options.path || `${PostsPath}/${options.id}/category.json`;
+async function fetchPost({categoryId, postId}: FetchOptions): Promise<FAQPost> {
+    const path = `${PostsPath}/${categoryId}/${postId}.md`;
 
     const raw = await fs.readFile(path, { encoding: 'utf-8' });
     const { content, data } = matter(raw);
 
     return {
-        data: { id, ...data } as FAQData,
+        data: { id: postId, ...data } as FAQData,
         content
     };
 };

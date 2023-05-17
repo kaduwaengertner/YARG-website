@@ -1,19 +1,20 @@
 import { glob } from 'glob';
-import { FAQCategory, FetchOptions, PostsPath, getIdByPath } from './index';
+import { FAQCategory, PostsPath } from './index';
 import fs from 'fs/promises';
 
 async function fetchCategories() {
     const paths = await glob(`${PostsPath}/**/category.json`);
-    const categories = paths.map(path => fetchCategory({ path }));
+    const categories = paths.map(path => {
+        const id = path.split("/").at(-2) as string;
+        return fetchCategory(id);
+    });
 
     return Promise.all(categories);
 };
 
-async function fetchCategory(options: FetchOptions): Promise<FAQCategory> {
-    if (!options.id && !options.path) throw new Error('Missing id/path');
+async function fetchCategory(id: string): Promise<FAQCategory> {
 
-    const id = options.id || getIdByPath(options.path as string, -2);
-    const path = options.path || `${PostsPath}/${id}/category.json`;
+    const path = `${PostsPath}/${id}/category.json`;
 
     const raw = await fs.readFile(path, { encoding: 'utf-8' });
     const information = JSON.parse(raw);

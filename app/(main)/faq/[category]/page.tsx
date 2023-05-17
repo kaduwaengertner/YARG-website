@@ -11,7 +11,7 @@ type Props = {
 
 export default async function FAQCategory({ params }: Props) {
 
-    const category = await fetchCategory({id: params.category});
+    const category = await fetchCategory(params.category);
     const categoryPosts = await fetchPosts(category.id);
     
     return (<>
