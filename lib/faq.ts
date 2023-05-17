@@ -67,6 +67,12 @@ async function getPost(options: getPostOptions): Promise<FAQPost> {
     };
 };
 
+async function getCategory(id: string): Promise<FAQCategory | undefined> {
+    const categories = await allCategories();
+
+    return categories.find(category => category.id === id);
+}
+
 async function postsByCategory(categoryId: string, posts: FAQPost[]) {
     const categories = (await allCategories()).map(category => category.id);
     
@@ -91,5 +97,5 @@ function getSlugByPath(path: string) {
     return slug;
 };
 
-export { allPosts, allCategories, getPost, postsByCategory };
+export { allPosts, allCategories, getPost, getCategory, postsByCategory };
 export type { FAQCategory, FAQPost, FAQData };
