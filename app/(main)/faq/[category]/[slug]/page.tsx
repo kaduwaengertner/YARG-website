@@ -1,5 +1,6 @@
 import PageTitle from "@/app/components/PageTitle";
-import { fetchPost } from "@/lib/faq/post";
+import { fetchCategories } from "@/lib/faq/category";
+import { fetchPost, fetchPosts } from "@/lib/faq/post";
 import { marked } from "marked";
 
 type Props = {
@@ -23,4 +24,16 @@ export default async function FAQPage({params}: Props) {
 
     </>);
 
+}
+
+export async function generateStaticParams() {
+    const categories = await fetchCategories();
+
+    const postsPerCategory = await Promise.all(
+        categories.map(category => fetchPosts(category.id))
+    );
+
+    const allPosts = postsPerCategory.flat();
+    
+    return allPosts.map(post => ({category: post.category.id, slug: post.data.id}));
 }

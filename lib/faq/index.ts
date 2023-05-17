@@ -13,6 +13,7 @@ type FAQData = {
 
 type FAQPost = {
     data: FAQData,
+    category: FAQCategory,
     content: string,
 };
 
