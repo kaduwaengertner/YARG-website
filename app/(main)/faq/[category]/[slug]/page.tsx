@@ -13,7 +13,7 @@ export default async function FAQPage({params}: Props) {
 
     const { category, slug } = params;
 
-    const post = await fetchPost(category, slug);
+    const post = await fetchPost(category, decodeURI(slug));
     const body = marked.parse(post.content);
 
     return (<>
