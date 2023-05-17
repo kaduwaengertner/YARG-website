@@ -1,5 +1,5 @@
 import PageTitle from "@/app/components/PageTitle";
-import { fetchCategory } from "@/lib/faq/category";
+import { fetchCategories, fetchCategory } from "@/lib/faq/category";
 import PostsGrid from "../PostsGrid";
 import { fetchPosts } from "@/lib/faq/post";
 
@@ -21,3 +21,9 @@ export default async function FAQCategory({ params }: Props) {
 
     </>);
 };
+
+export async function generateStaticParams() {
+    const categories = await fetchCategories();
+
+    return categories.map(category => ({ category: category.id }));
+}
