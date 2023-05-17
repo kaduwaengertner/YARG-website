@@ -2,7 +2,8 @@
 import PageTitle from "@/app/components/PageTitle";
 import style from './FAQ.module.css';
 import FAQItem from "./Item";
-import { allCategories, allPosts, postsByCategory } from "@/lib/faq";
+import { fetchCategories } from "@/lib/faq/category";
+import { fetchPosts } from "@/lib/faq/post";
 
 export const metadata = {
     title: "FAQ"
@@ -10,20 +11,19 @@ export const metadata = {
 
 export default async function FAQ() {
 
-    const posts = await allPosts();
-    const categories = await allCategories();
+    const categories = await fetchCategories();
 
     return (<>
         <PageTitle sticky title="F.A.Q." description="Frequently Asked Questions" />
 
         {
             categories.map(async category => {
-                const categoryPosts = await postsByCategory(category.id, posts);
+                const categoryPosts = await fetchPosts(category.id);
                 if (categoryPosts.length < 1) return;
 
                 return (<>
                     <div className={style.category}>
-                        <div className={style.title}>{category.title}</div>
+                        <div className={style.title}>{category.name}</div>
 
                         <div className={style.items}>
                             {

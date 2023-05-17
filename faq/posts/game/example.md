@@ -1,7 +1,6 @@
 ---
 title: Example post!!
 description: This is a description!!!! Text text more text
-category: game
 tags:
     - game
     - example

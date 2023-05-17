@@ -9,7 +9,7 @@ type Props = {
 }
 
 const FAQItem: React.FC<Props> = ({ category, data }) => {
-  return (<Link href={`faq/${category.id}/${data.slug}`}>
+  return (<Link href={`faq/${category.id}/${data.id}`}>
     <div className={style.item}>
 
       <div className={style.info}>
