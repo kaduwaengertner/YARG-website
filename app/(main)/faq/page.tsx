@@ -4,6 +4,7 @@ import style from './FAQ.module.css';
 import FAQItem from "./Item";
 import { fetchCategories } from "@/lib/faq/category";
 import { fetchPosts } from "@/lib/faq/post";
+import PostsGrid from "./PostsGrid";
 
 export const metadata = {
     title: "FAQ"
@@ -25,11 +26,7 @@ export default async function FAQ() {
                     <div className={style.category}>
                         <div className={style.title}>{category.name}</div>
 
-                        <div className={style.items}>
-                            {
-                                categoryPosts.map(post => <FAQItem key={post.data.title} category={category} data={post.data} />)
-                            }
-                        </div>
+                        <PostsGrid category={category} posts={categoryPosts}/>
                     </div>
                 </>);
             })

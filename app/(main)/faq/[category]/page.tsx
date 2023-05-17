@@ -1,5 +1,7 @@
 import PageTitle from "@/app/components/PageTitle";
-import { getCategory } from "@/lib/faq";
+import { fetchCategory } from "@/lib/faq/category";
+import PostsGrid from "../PostsGrid";
+import { fetchPosts } from "@/lib/faq/post";
 
 type Props = {
     params: {
@@ -9,11 +11,13 @@ type Props = {
 
 export default async function FAQCategory({ params }: Props) {
 
-    const category = await getCategory(params.category);
-
+    const category = await fetchCategory({id: params.category});
+    const categoryPosts = await fetchPosts(category.id);
+    
     return (<>
     
-        <PageTitle title={category?.title} description="Frequently Asked Questions" />
-    
+        <PageTitle title={category.name} description={category.description || "Frequently Asked Questions"} />
+        <PostsGrid category={category} posts={categoryPosts} />
+
     </>);
 };
