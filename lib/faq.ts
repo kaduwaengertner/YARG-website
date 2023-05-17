@@ -83,6 +83,12 @@ async function postsByCategory(categoryId: string, posts: FAQPost[]) {
     );
 }
 
+async function getPostByCategory(categoryId: string, postId: string) {
+    const posts = await postsByCategory(categoryId, await allPosts());
+
+    return categoryId === defaultCategory.id ? getPost({slug: postId}) : posts.find(post => post.data.slug === postId);
+}
+
 /* Utils */
 
 async function getPathBySlug(slug: string) {
@@ -97,5 +103,5 @@ function getSlugByPath(path: string) {
     return slug;
 };
 
-export { allPosts, allCategories, getPost, getCategory, postsByCategory };
+export { allPosts, allCategories, getPost, getCategory, postsByCategory, getPostByCategory };
 export type { FAQCategory, FAQPost, FAQData };
