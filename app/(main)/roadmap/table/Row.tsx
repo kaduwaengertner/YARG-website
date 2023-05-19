@@ -7,8 +7,9 @@ const Row: React.FC<{task: Issue}> = ({task}) => {
   return (<tr>
     
     <td data-cell="task">
-        <span className={styles.title}>{task.task}</span>
-        <span className={styles.description}>{task.description}</span>
+      <a className={styles.title} href={`https://yarg.youtrack.cloud/issue/${task.id}`} target="_blank">
+        {task.task}
+      </a>
     </td>
 
     <td data-cell="category">

@@ -14,6 +14,7 @@ async function api(path: string) {
 };
 
 type Issue = {
+    id: string,
     task: string,
     description: string,
     category: string,
@@ -24,9 +25,10 @@ type Issue = {
 
 async function getIssues(): Promise<Issue[]> {
 
-    const raw = await api("issues?fields=summary,description,resolved,customFields(value(name),projectCustomField(field(name)))");
+    const raw = await api("issues?fields=idReadable,summary,description,resolved,customFields(value(name),projectCustomField(field(name)))");
 
     const issues = raw.map((issue: any) => ({
+        id: issue.idReadable,
         task: issue.summary,
         description: issue.description,
         category: getCustomField(issue, "Type")?.value?.name || "",

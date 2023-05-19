@@ -63,7 +63,7 @@
     margin: 5px 0px;
 }
 
-td > span.title {
+td > .title {
     font-size: 1.3em;
     font-weight: 700;
     text-transform: uppercase;
