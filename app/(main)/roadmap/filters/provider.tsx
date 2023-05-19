@@ -1,7 +1,7 @@
 'use client';
  
 import { searchCheck } from '@/app/components/SearchBar';
-import { Roadmap } from '@/lib/roadmap';
+import type { Issue } from '@/lib/youtrack';
 import { transformName } from '@/util/StringUtils';
 import { Dispatch, SetStateAction, createContext, useState } from 'react';
 
@@ -48,11 +48,11 @@ const FiltersProvider: React.FC<ProviderProps> = ({children}) => {
     const togglePriority = (name: string, toggle?: boolean) => toggleFilter(setPriorityFilter, name, toggle);
     const toggleStatus = (name: string, toggle?: boolean) => toggleFilter(setStatusFilter, name, toggle);
 
-    const filterCheck = (task: Roadmap) => {
+    const filterCheck = (task: Issue) => {
         return searchCheck(task.task, searchFilter) &&
         !statusFilter.includes(transformName(task.status)) &&
-        !categoryFilter.includes(transformName(task.type)) &&
-        !priorityFilter.includes(transformName(task.taskSize))
+        !categoryFilter.includes(transformName(task.category)) &&
+        !priorityFilter.includes(transformName(task.priority))
     }
 
     return (
