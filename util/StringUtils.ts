@@ -8,7 +8,7 @@ function toCamelCase(string: string) {
     .replace("(", "").replace(")", "")
 };
 
-function transformName(key: string) {
+function transformName(key: string = "") {
     return key.trim().toLowerCase()
 }
 

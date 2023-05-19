@@ -6,8 +6,8 @@ import FilterGrid from "./filters/FilterGrid";
 import Search from "./filters/SearchFilter";
 import ViewFilterButton from "./filters/ViewFilterButton";
 import FiltersProvider from './filters/provider';
-import { Roadmap, getRoadmap } from '@/lib/roadmap';
 import FilteredTable from "./table/FilteredTable";
+import { Issue, getIssues } from "@/lib/youtrack";
 
 export const metadata = {
     title: "Roadmap"
@@ -15,17 +15,17 @@ export const metadata = {
 
 export default async function Roadmap() {
 
-    const roadmap = await getRoadmap();
+    const roadmap = await getIssues();
 
-    function getList(key: keyof Roadmap) {
+    function getList(key: keyof Issue) {
         const allList = roadmap.map(task => transformName(task[key]));
         const uniqueSet = new Set(allList);
         return Array.from(uniqueSet);
     }
 
-    const categoryList = getList('type');
-    const priorityList = getList('taskSize');
-    const statusList = getList('status');
+    const categoryList = getList("category");
+    const priorityList = getList("priority");
+    const statusList = getList("status");
 
     return (<>
 

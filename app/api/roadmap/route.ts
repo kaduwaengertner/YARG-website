@@ -1,9 +1,9 @@
-import { getRoadmap } from '@/lib/roadmap';
+import { getIssues } from '@/lib/youtrack';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
 
-    const roadmap = await getRoadmap();
+    const roadmap = await getIssues();
 
     return NextResponse.json(roadmap);
 }

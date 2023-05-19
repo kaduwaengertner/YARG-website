@@ -1,12 +1,12 @@
 "use client";
 
-import type { Roadmap } from '@/lib/roadmap';
 import Row from './Row';
 import { useContext } from 'react';
 import { FiltersContext } from '../filters/provider';
+import { Issue } from '@/lib/youtrack';
 
 type Props = {
-  list: Roadmap[],
+  list: Issue[],
 };
 
 const FilteredTable: React.FC<Props> = ({ list }) => {
