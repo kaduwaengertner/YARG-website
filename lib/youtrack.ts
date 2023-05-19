@@ -45,3 +45,4 @@ function getCustomField(issue: any, customFieldName: string) {
 };
 
 export { getIssues };
+export type { Issue };

@@ -81,7 +81,7 @@ function getStatusColor(status: string): TagColor {
         color: "var(--background)"
     }
 
-    if(lowercase.includes('doing')) return {
+    if(lowercase.includes('incomplete')) return {
         background: "var(--yellow)",
         color: "var(--background)"
     }
