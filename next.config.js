@@ -16,7 +16,7 @@ const nextConfig = {
 
             {
                 source: '/download/dev',
-                destination: 'https://drive.google.com/drive/folders/1WAxRqtQ-EF1ryF99sH8GJSS8SjMJj06u?usp=share_link',
+                destination: 'https://github.com/YARC-Official/YARG-BleedingEdge/releases/latest',
                 permanent: true,
             },
 
