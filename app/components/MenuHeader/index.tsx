@@ -17,7 +17,6 @@ const MenuHeader: React.FC = () => {
             <Link className={styles.link} href="/roadmap">Roadmap</Link>
             {/* <Link className={styles.link} href="/contributors">Contributors</Link> */}
 
-            {/* @ts-expect-error Server Component */}
             <DownloadButton />
         </div>
 

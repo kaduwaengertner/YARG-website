@@ -13,7 +13,6 @@ export default function RootLayout({
             {children}
         </main>
 
-        {/* @ts-expect-error Server Component */}
         <Footer />
     </>);
 

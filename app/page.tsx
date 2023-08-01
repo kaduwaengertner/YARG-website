@@ -46,7 +46,6 @@ export default async function Home() {
 
     </main>
     
-    {/* @ts-expect-error Server Component */}
     <Footer />
 
   </>)
