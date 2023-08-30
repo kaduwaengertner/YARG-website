@@ -16,14 +16,16 @@
     background: #000;
     overflow: hidden;
 
+    aspect-ratio: 16/9;
     max-width: 1070px;
     max-height: 570px;
     --borderRadius: 30px;
     border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
 }
 
-.header > .video > :is(img, video) {
+.header > .video > :is(img, video, iframe) {
     width: 100%;
+    height: 100%;
 }
 
 .header > .video > .overlay {
@@ -56,7 +58,8 @@
 .header > .buttons {
     position: absolute;
     width: fit-content;
-    inset: auto 0 150px;
+    inset: auto 0 -60px;
+    z-index: 2;
     margin: 0 auto;
     padding: 35px;
 

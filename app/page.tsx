@@ -20,9 +20,13 @@ export default async function Home() {
       <FullLogo className={styles.logo}/>
       
       <div className={styles.video}>
-        <video autoPlay muted loop playsInline poster={gameScreenshot.src}>
-          <source src="/ingame-video.webm" type="video/webm" />
-        </video>
+      <iframe
+        src={"https://www.youtube.com/embed/UgH0etW5NYo"}
+        title="YARG Setlist: Wave 2 Trailer"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
       </div>
     
       <div className={styles.buttons}>
