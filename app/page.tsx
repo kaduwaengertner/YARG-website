@@ -21,8 +21,8 @@ export default async function Home() {
       
       <div className={styles.video}>
       <iframe
-        src={"https://www.youtube.com/embed/UgH0etW5NYo"}
-        title="YARG Setlist: Wave 2 Trailer"
+        src={"https://www.youtube.com/embed/HuIqMeEZrmE"}
+        title="YARG Setlist: Wave 3 Trailer"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
@@ -31,7 +31,7 @@ export default async function Home() {
     
       <div className={styles.buttons}>
 
-        <a href="https://github.com/YARC-Official/YARG/releases/latest">
+        <a href="https://github.com/YARC-Official/YARC-Launcher/releases/latest">
           <HeaderButton background="rgb(var(--accent))" style={{ textTransform: "none" }}>
             DOWNLOAD { version }
           </HeaderButton>
