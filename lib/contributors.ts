@@ -1,38 +1,42 @@
 import 'server-only';
 
-import { BooleanCell, getCSV } from '@/util/GoogleSheets';
-import Papa from 'papaparse';
+type Socials = {
+    Twitter?: string;
+    Twitch?: string;
+    Github?: string;
+    VideoService?: string;
+    Discord?: string;
+    Email?: string;
+    Website?: string;
+};
 
-type Contributors = {
-    name: string,
-    image: string,
-    github: string,
-    twitter: string,
-    artist: boolean,
-    developer: boolean,
-    extra: string
-}
+type Contributions = {
+    "OpenSource"?: string[];
+    "YARC-Charters"?: string[];
+    "YARC-Launcher"?: string[];
+    "YARG"?: string[];
+    "Community"?: string[];
+};
 
-async function getContributors():Promise<Contributors[]> {
-    const raw = await getCSV("1R1iXgoAeXhv6TLay-tnQew9Vu7ySIBUyhAE1lVImwDI", { tag: 'contributors' });
-    
-    const { data } = Papa.parse<Contributors>(raw, {
-        header: true,
+type Contributor = {
+    Name: string;
+    SpecialRole?: string;
+    Socials?: Socials;
+    Contributions?: Contributions;
+};
 
-        transform: (value) => {
-            return value.trim();
-        },
-    });
+async function getContributors():Promise<Contributor[]> {
+    const raw = await fetch(
+        `https://raw.githubusercontent.com/YARC-Official/Contributors/master/contributors.json`,
+        {
+            next: {
+                revalidate: 1800,
+                tags: ['contributors']
+            }
+        }).then(res => res.json());
 
-    const transformed = data.map(task => {
-        task.artist = BooleanCell(task.artist);
-        task.developer = BooleanCell(task.developer);
-        
-        return task;
-    });
-
-    return transformed;
+    return raw;
 }
 
 export { getContributors };
-export type { Contributors };
+export type { Contributor };
